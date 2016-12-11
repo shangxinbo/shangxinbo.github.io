@@ -1,0 +1,56 @@
+body{
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    background:url(../images/index.jpg) center center;
+}
+a{
+    text-decoration: none;
+}
+.layer{
+    background:rgba(0,0,0,0.7);
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+.container{
+    height:500px;
+    width:800px;
+}
+.avtor{
+    width: 200px;
+    height:200px;
+    border-radius: 100px;
+    display:block;
+    margin:20px auto;
+}
+.my_info{
+    color:white;
+    line-height: 50px;
+    font-family: "Brush Script MT";
+    font-size:30px;
+}
+.nav{
+    clear:both;
+    width:400px;
+    margin:30px auto;
+    padding:30px;
+    text-align:center;
+}
+.nav a{
+    height:40px;
+    background-size: auto 40px ;
+}
+.icon-blog{
+    background: url("../images/blog.png") no-repeat center center;
+}
+.icon-qq{
+    background: url("../images/qq.png") no-repeat center center;
+}
+.icon-google{
+    background: url("../images/google.png") no-repeat center center;
+}
+.icon-github{
+    background: url("../images/github.png") no-repeat center center;
+}
