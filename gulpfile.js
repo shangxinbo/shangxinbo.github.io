@@ -9,8 +9,7 @@ var template ={
             <html lang="en">\
             <head>\
                 <meta charset="UTF-8">\
-                <title>ShangXinbo——A simple web front engineer</title>\
-                <meta name="viewport" content="width=device-width, initial-scale=1">\
+                <title></title>\
                 <link href="../css/github-markdown.css" rel="stylesheet" />\
                 <link href="../css/article.css" rel="stylesheet" />\
             </head>\
@@ -26,3 +25,9 @@ gulp.task('blog',function(){
         .pipe(footer(template.footer))
         .pipe(gulp.dest('blog'));
 });
+
+gulp.task('watch',function(){
+    gulp.watch('md/*.md',['blog']);
+});
+
+gulp.task('default', ['blog']);
