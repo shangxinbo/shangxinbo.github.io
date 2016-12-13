@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/shangxinbo/shangxinbo.github.io#readme",
   "dependencies": {
+    "glob": "^7.1.1",
     "gulp": "^3.9.1",
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.8.8",

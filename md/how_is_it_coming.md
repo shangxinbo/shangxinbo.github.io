@@ -1,5 +1,4 @@
 # How is it coming?
-
 *时间：2016-12-13*
 
 it's time to going on my writing.
