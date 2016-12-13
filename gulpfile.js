@@ -1,4 +1,3 @@
-
 const gulp = require('gulp');
 var replace = require('gulp-replace');
 var markdown = require('gulp-markdown');
@@ -8,8 +7,8 @@ var glob = require("glob");
 var fs = require('fs');
 const md = require('markdown');
 
-var template ={
-    header:'<!DOCTYPE html>\
+var template = {
+    header: '<!DOCTYPE html>\
             <html lang="en">\
             <head>\
                 <meta charset="UTF-8">\
@@ -18,10 +17,10 @@ var template ={
                 <link href="../css/article.css" rel="stylesheet" />\
             </head>\
             <body class="markdown-body">',
-    footer:'</body></html>'
+    footer: '</body></html>'
 };
 
-gulp.task('blog',function(){
+gulp.task('blog', function () {
     gulp.src('md/*.md')
         .pipe(markdown())
         .pipe(header(template.header))
@@ -29,25 +28,33 @@ gulp.task('blog',function(){
         .pipe(gulp.dest('blog'));
 });
 
-gulp.task('uplist',function(){
+gulp.task('uplist', function () {
+    var arr = new Array();
     var tables = '';
     glob('md/*.md', function (err, files) {
-        for(var i=0;i<files.length;i++){
+        for (var i = 0; i < files.length; i++) {
             var file = fs.readFileSync(files[i]);
-
-            let mdString = md.markdown.toHTMLTree(file.toString(),'Maruku');
-            tables +='<tr><td>'+ mdString[1][1] + '</td><td>'+ mdString[2][1] +'</td></tr>';
-        };
-        console.log(tables);
+            let mdString = md.markdown.toHTMLTree(file.toString(), 'Maruku');
+            arr.push({
+                time: mdString[2][1][1],
+                title: mdString[1][1],
+                href: files[i].replace('md/', 'blog/').replace('.md', '.html')
+            });
+        }
+        arr.sort(function (a, b) {
+            return a.time < b.time
+        });
+        for (var j = 0; j < arr.length; j++) {
+            tables += '<tr><td><a href="' + arr[j]['href'] + '">' + arr[j]['title'] + '</a></td><td>' + arr[j]['time'] + '</td></tr>';
+        }
         gulp.src('diary.html')
-         .pipe(replace(/<table>[\s|\S]*<\/table>/,'<table>' + tables + '</table>'))
-         .pipe(gulp.dest('.'));
+            .pipe(replace(/<table class="list">([\s\S]*)<\/table>/, '<table class="list">' + tables + '</table>'))
+            .pipe(gulp.dest('.'));
     });
-
 });
 
-gulp.task('watch',function(){
-    gulp.watch('md/*.md',['blog']);
+gulp.task('watch', function () {
+    gulp.watch('md/*.md', ['blog', uplist]);
 });
 
-gulp.task('default', ['blog']);
+gulp.task('default', ['blog', 'uplist']);
