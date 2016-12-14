@@ -14,6 +14,14 @@
     margin: 0 auto;
     color:white;
 }
+.header_container .title{
+    margin:10px 0px;
+    font-size: 1.2rem;
+}
+.header_container .pure-menu-list a{
+    color:white;
+    margin-right:10px;
+}
 
 .markdown-body {
     box-sizing: border-box;
