@@ -1,3 +1,20 @@
+@font-face{
+    font-style:normal;
+    font-family:'Roboto';
+    src:url('../fonts/Roboto-Light.ttf') format('truetype');
+}
+.header{
+    padding: 50px 20px 50px 20px;
+    background-color: #5454c7;
+    font-family: Roboto;
+    font-style: italic;
+}
+.header_container{
+    max-width: 700px;
+    margin: 0 auto;
+    color:white;
+}
+
 .markdown-body {
     box-sizing: border-box;
     min-width: 200px;
