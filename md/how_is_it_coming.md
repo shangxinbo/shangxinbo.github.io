@@ -21,5 +21,17 @@
 
 废掉code，不在折腾什么主题，也不管什么域名服务器，不用考虑SEO，不用管谁在看。And then it's comming !
 
-wordpress ? , ghost ? , jekyll ? , hexo ? hugo?  nexT ?   no !
+wordpress ? , ghost ? , jekyll ? , hexo ? , hugo? , nexT ? ,  bootstrap ? , uikit ?  no !
 
+Look at it!
+
+feature:
+
+* 需要第三方托管，于是github pages
+* 需要使用markdown编写,md to html，gulp足以
+* style:  简单是真，simple-grid.css,github-markdown.css,pure.css
+* fonts:  google fonts Roboto
+* 可移植性强
+* 封面页,列表页and articles
+
+以此，我可以更专注与文字，更专注与思维流动，更专注在分享。Make simple life and hopeful. 
