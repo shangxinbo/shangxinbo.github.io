@@ -1,0 +1,148 @@
+<!DOCTYPE html>            <html lang="en">            <head>                <meta charset="UTF-8">                <title></title>                <link href="../css/github-markdown.css" rel="stylesheet" />                <link href="../css/article.css" rel="stylesheet" />            </head>            <body class="markdown-body"><h1 id="npm">npm</h1>
+<p><em>2017-01-18</em></p>
+<p>npm，即Node Package Manager，是node的包管理工具。官方对于包的定义是指可重用的代码组合，有时也叫模块(modules)，一个包就是一个目录，这个目录中有一个或多个文件，其中一个文件是package.json。npm的用途核心就是两个词“分享(share)”,“重用(reuse)”。</p>
+<p>虽然npm开始是被用于node的包管理，但慢慢发展之后npm的包已经不局限于node服务器端的代码包，他还包括一些命令行使用的包，以及浏览器端使用的包。当我们谈到npm时，一般我们会关注以下三点</p>
+<ul>
+<li><a href="www.npmjs.com">npm website</a>  npm官方网站</li>
+<li><a href="https://registry.npmjs.org/">npm registry</a>  存储包含大家分享包的信息的大数据中心,这些数据会同步到网站上</li>
+<li>npm client      开发者用它将本地的包发布到npm registry上</li>
+</ul>
+<h2 id="-">由来</h2>
+<p>npm 是node第二继承人Isaac Z. Schlueter在2009年创造并维护。后来作为node的官方包管理工具并随node捆绑在一起。因node开源，npm也作为开源项目公布。2014年Isaac Z. Schlueter协同Laurie Voss和Rod Boothby创办npm有限公司，坐落于加利福尼亚奥克兰市中心,他作为CEO。这个公司主要做的3件事情</p>
+<ul>
+<li>提供npm registry 源维护服务</li>
+<li>为个人和企业安全使用包构建工具和操作</li>
+<li>为社区创造新的工具和服务</li>
+</ul>
+<p>##安装</p>
+<ul>
+<li>npm 在node v0.10之后就被捆绑在node中作为node官方内置包管理器，所以安装<a href="https://nodejs.org/en/download/">node.js</a>会自动安装npm</li>
+<li>还可通过下载安装 <a href="https://registry.npmjs.org/npm/-/npm-{VERSION}.tgz">https://registry.npmjs.org/npm/-/npm-{VERSION}.tgz</a> </li>
+<li>一般npm更新会比node更新频率高，所以可以执行命令升级</li>
+</ul>
+<pre><code>[sudo] npm install npm@latest -g
+</code></pre><h2 id="-npm-">安装一个npm包</h2>
+<ul>
+<li><p>全局安装(globally) —— 若你想使用这个包作为命令行工具(CLI)，使用全局安装</p>
+<p> <code>npm install -g &lt;package_name&gt;</code></p>
+</li>
+<li><p>本地安装(locally) —— 若你想在自己的模块中依赖这个包，使用本地安装，默认命令即可</p>
+<p><code>npm install &lt;package_name&gt;</code></p>
+<p>本地安装时，会在当前目录下的<code>node_modules</code>目录(如果没有会自动创建)解压包文件，这时，若你的当前目录中没有package.json，默认会安装包的最新版本；若存在package.json文件，npm会依据版本语义规则安装包的版本，下面是详细的版本语义规则，详见<a href="https://docs.npmjs.com/misc/semver">The semantic versioner for npm</a></p>
+<p>对于发布者的规则，当你想在npm registry发布你的包时，应该以1.0.0开始，虽然很多人不遵守这条规则，此外变更应该遵循以下规则</p>
+<ul>
+<li>补丁版本(Patch release) 修补bug时或者其他小改动，增加版本号的最后一位，例如1.0.1</li>
+<li>次要版本(Minor release) 增加新功能不会破坏旧的功能，增加版本号的中间一位，例如1.1.0</li>
+<li>主要版本(Major release)  改动会破坏旧的功能，增加版本号的第一位，例如2.0.0</li>
+</ul>
+<p>对于使用者的规则，你可以在package.json 文件中指明哪些更新您的应用程序可以接受,如果你可接受的包版本是最小1.0.4,</p>
+<ul>
+<li>补丁版本 1.0 or 1.0.x or ~1.0.4</li>
+<li>次要版本 1 or 1.x or ^1.0.4</li>
+<li>主要版本 * or x</li>
+</ul>
+</li>
+</ul>
+<p>##package.json
+声明你的包的很多元数据信息</p>
+<ul>
+<li>可以对你项目中依赖的模块做一个总体的描述</li>
+<li>可以指定你要依赖的包的版本，可以使用语义规则</li>
+<li>方便你分享你的模块</li>
+</ul>
+<p>最少包含的元字段是name和version。详细的元字段信息见<a href="https://docs.npmjs.com/files/package.json">package</a></p>
+<ul>
+<li>name 小写英文，一个词，不能有空格，可以使用破折号和下划线</li>
+<li>version 遵循上文说的语义规则</li>
+<li>description 包的描述信息，因为会影响npm search，当没有设置这个字段时，npm默认会选取README.MD/README的首行文字作为描述</li>
+<li>dependencies 生产环境依赖包，使用 <code>--save</code> 安装参数可自动添加</li>
+<li>devDependencies 开发和测试环境依赖包，使用 <code>--save-dev</code> 安装参数可自动添加</li>
+</ul>
+<p>npm初始化项目时可以和用户交互填写这些元数据<code>npm init</code>,有些时候我们只是想很快的初始化文件，而不想立马填写元数据信息，可以使用--yes(-y)参数来生成默认的配置，达到快速初始化的目的</p>
+<h2 id="-">使用中其他命令</h2>
+<ul>
+<li>更新包 在package.json所在目录 <code>npm update</code> </li>
+<li>查看是否有更新包```npm outdated``````</li>
+<li>卸载包<code>npm uninstall &lt;package_name&gt;</code></li>
+<li>全局安装卸载添加 <code>-g</code>参数,例：<code>npm uninstall -g express</code></li>
+<li>更新全局安装包 <code>npm install -g &lt;package_name&gt;</code></li>
+</ul>
+<h2 id="-">发布包</h2>
+<p>首先要创建npm registry 的用户，如果没有需要创建一个<code>npm adduser</code>如果你已经在website上有了一个账号可以使用<code>npm login</code>在客户端存储你的凭证信息。</p>
+<p>然后执行<code>npm publish</code>来发布包，需要注意的是除了.gitignore和.npmignore声明的文件外其他一律会包含在包里，</p>
+<p>发布之后可以访问 <a href="https://npmjs.com/package/">https://npmjs.com/package/</a><package_name>来检查发布结果。</p>
+<p>更新已经发布过的包时首先使用<code>npm version &lt;update_type&gt;</code>更新包中package.json的version信息。这里的update_type字段可以是patch, minor, major。除此之外这个命令还会创建一个git tag，这里需要注意以下。</p>
+<h2 id="npm-">npm编码风格</h2>
+<ul>
+<li><p>每行代码长度少于80个字符</p>
+</li>
+<li><p>2个空格缩进</p>
+</li>
+<li><p>大括号与需要他的代码在同一行,而不是另起一行，如果一个需要大括号包裹的块在一行上则不要写大括号，如果不是就要写</p>
+<pre><code>~ function(){
+~ if (foo) bar()
+~ while (foo) {
+    bar()
+  }
+</code></pre></li>
+<li><p>分号，出了以下4种情况不要使用</p>
+<ul>
+<li><code>for (;;)</code></li>
+<li><code>while (something) ;</code> 这样的空循环，但你应该避免这样写</li>
+<li><code>case &#39;foo&#39;: doSomething(); break</code></li>
+<li><code>(</code> , <code>[</code> , <code>+</code> , <code>-</code> 在首行的时候，为了阻止解析器认为它是一个函数或属性</li>
+</ul>
+<p>依据这个原则的正规的代码格式如下：</p>
+<pre><code>;(x || y).doSomething()
+;[a, b, c].forEach(doSomething)
+for (var i = 0; i &lt; 10; i ++) {
+  switch (state) {
+    case &#39;begin&#39;: start(); continue
+    case &#39;end&#39;: finish(); break
+    default: throw new Error(&#39;unknown state&#39;)
+  }
+  end()
+}
+</code></pre></li>
+<li><p>逗号前置，如下</p>
+<pre><code>var magicWords = [ &#39;abracadabra&#39;
+                 , &#39;gesundheit&#39;
+                 , &#39;ventrilo&#39;
+                 ]
+  , spells = { &#39;fireball&#39; : function () { setOnFire() }
+             , &#39;water&#39; : function () { putOut() }
+             }
+  , a = 1
+  , b = &#39;abc&#39;
+  , etc
+  , somethingElse
+</code></pre></li>
+<li><p>使用单引号，防止escaping</p>
+</li>
+<li><p>除了函数调用外，所有的<code>(</code>前加一个空格；不要在行尾加空格；不要对空行缩进；不要用没有意义的空格；</p>
+</li>
+<li><p>尽量使用命名函数</p>
+</li>
+<li><p>尽量使用异步式编程，<code>callback</code>回调函数要作为参数的最后一个，callback的第一个参数应该是<code>Error</code>or<code>null</code>；永远不要在回调中抛出异常，这比不写都糟糕，你可以尝试传一个Error message来解决问题。</p>
+</li>
+<li><p>永远使用<code>new Error</code> 的形式生成Error message，不要只传一个字符串错误信息。</p>
+</li>
+<li><p>清除没用的logs。一直重复打印日志没有任何意义。当有错误发生时才应该打印日志</p>
+</li>
+<li><p>使用小驼峰<code>lowerCamelCase</code>命名变量；使用大驼峰<code>UpperCamelCase</code>命名Class;使用连字符号<code>all-lower-hyphen-css-case</code>命名文件名或config键名;使用<code>CAPS_SNAKE_CASE</code>形式命名常量</p>
+</li>
+<li><p>如果一个变量是Boolen类型那它永远只能是<code>true/false</code>,不要给他设置成0;移除一个变量要把这个变量设为null；永远不要把一个变量定义成undefined</p>
+</li>
+</ul>
+<h2 id="npm-scripts">npm scripts</h2>
+<p>阮大已经总结好<a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html">npm scripts 使用指南</a></p>
+<h2 id="npm-cli">npm CLI</h2>
+<p>TODO</p>
+<h2 id="configuring-npm">configuring npm</h2>
+<p>TODO</p>
+<h2 id="links">links</h2>
+<ul>
+<li><a href="https://docs.npmjs.com/">npm docs</a></li>
+<li><a href="http://coloration.cc/npmjs-documentation/">npm doc in chinese</a></li>
+</ul>
+</body></html>
