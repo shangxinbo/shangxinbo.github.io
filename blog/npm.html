@@ -1,14 +1,14 @@
 <!DOCTYPE html>            <html lang="en">            <head>                <meta charset="UTF-8">                <title></title>                <link href="../css/github-markdown.css" rel="stylesheet" />                <link href="../css/article.css" rel="stylesheet" />            </head>            <body class="markdown-body"><h1 id="npm">npm</h1>
 <p><em>2017-01-18</em></p>
 <p>npm，即Node Package Manager，是node的包管理工具。官方对于包的定义是指可重用的代码组合，有时也叫模块(modules)，一个包就是一个目录，这个目录中有一个或多个文件，其中一个文件是package.json。npm的用途核心就是两个词“分享(share)”,“重用(reuse)”。</p>
-<p>虽然npm开始是被用于node的包管理，但慢慢发展之后npm的包已经不局限于node服务器端的代码包，他还包括一些命令行使用的包，以及浏览器端使用的包。当我们谈到npm时，一般我们会关注以下三点</p>
+<p>当我们谈到npm时，一般我们会关注以下三点</p>
 <ul>
 <li><a href="www.npmjs.com">npm website</a>  npm官方网站</li>
 <li><a href="https://registry.npmjs.org/">npm registry</a>  存储包含大家分享包的信息的大数据中心,这些数据会同步到网站上</li>
 <li>npm client      开发者用它将本地的包发布到npm registry上</li>
 </ul>
 <h2 id="-">由来</h2>
-<p>npm 是node第二继承人Isaac Z. Schlueter在2009年创造并维护。后来作为node的官方包管理工具并随node捆绑在一起。因node开源，npm也作为开源项目公布。2014年Isaac Z. Schlueter协同Laurie Voss和Rod Boothby创办npm有限公司，坐落于加利福尼亚奥克兰市中心,他作为CEO。这个公司主要做的3件事情</p>
+<p>npm 是node第二继承人Isaac Z. Schlueter在2009年创造并维护，后作为node的官方包管理工具并随node捆绑在一起。因node开源，npm也作为开源项目公布。2014年Isaac Z. Schlueter协同Laurie Voss和Rod Boothby创办npm有限公司，坐落于加利福尼亚奥克兰市中心,他作为CEO。这个公司主要做的3件事情</p>
 <ul>
 <li>提供npm registry 源维护服务</li>
 <li>为个人和企业安全使用包构建工具和操作</li>
@@ -20,34 +20,30 @@
 <li>还可通过下载安装 <a href="https://registry.npmjs.org/npm/-/npm-{VERSION}.tgz">https://registry.npmjs.org/npm/-/npm-{VERSION}.tgz</a> </li>
 <li>一般npm更新会比node更新频率高，所以可以执行命令升级</li>
 </ul>
-<pre><code>[sudo] npm install npm@latest -g
-</code></pre><h2 id="-npm-">安装一个npm包</h2>
+<pre><code class="lang-shell">[sudo] npm install npm@latest -g
+</code></pre>
+<h2 id="-npm-">安装一个npm包</h2>
 <ul>
 <li><p>全局安装(globally) —— 若你想使用这个包作为命令行工具(CLI)，使用全局安装</p>
 <p> <code>npm install -g &lt;package_name&gt;</code></p>
 </li>
 <li><p>本地安装(locally) —— 若你想在自己的模块中依赖这个包，使用本地安装，默认命令即可</p>
 <p><code>npm install &lt;package_name&gt;</code></p>
-<p>本地安装时，会在当前目录下的<code>node_modules</code>目录(如果没有会自动创建)解压包文件，这时，若你的当前目录中没有package.json，默认会安装包的最新版本；若存在package.json文件，npm会依据版本语义规则安装包的版本，下面是详细的版本语义规则，详见<a href="https://docs.npmjs.com/misc/semver">The semantic versioner for npm</a></p>
-<p>对于发布者的规则，当你想在npm registry发布你的包时，应该以1.0.0开始，虽然很多人不遵守这条规则，此外变更应该遵循以下规则</p>
+<p>本地安装时，会在当前目录下的<code>node_modules</code>目录(如果没有会自动创建)解压包文件，这时，若你的当前目录中没有package.json，默认会安装包的最新版本；若存在package.json文件，npm会依据版本语义规则安装包的版本，下面是详细的版本<strong>语义规则</strong>，详见<a href="https://docs.npmjs.com/misc/semver">The semantic versioner for npm</a></p>
+<p>对于发布者的规则，当你想在npm registry发布你的包时，应该以1.0.0开始，虽然很多人不遵守这条规则，此外变更时应该遵循以下规则</p>
 <ul>
 <li>补丁版本(Patch release) 修补bug时或者其他小改动，增加版本号的最后一位，例如1.0.1</li>
 <li>次要版本(Minor release) 增加新功能不会破坏旧的功能，增加版本号的中间一位，例如1.1.0</li>
 <li>主要版本(Major release)  改动会破坏旧的功能，增加版本号的第一位，例如2.0.0</li>
 </ul>
-<p>对于使用者的规则，你可以在package.json 文件中指明哪些更新您的应用程序可以接受,如果你可接受的包版本是最小1.0.4,</p>
-<ul>
-<li>补丁版本 1.0 or 1.0.x or ~1.0.4</li>
-<li>次要版本 1 or 1.x or ^1.0.4</li>
-<li>主要版本 * or x</li>
-</ul>
+<p>对于使用者的规则，你可以在package.json 文件中指明哪些更新您的应用程序可以接受，规则详见上文链接</p>
 </li>
 </ul>
 <h2 id="package-json">package.json</h2>
 <p>声明你的包的很多元数据信息</p>
 <ul>
 <li>可以对你项目中依赖的模块做一个总体的描述</li>
-<li>可以指定你要依赖的包的版本，可以使用语义规则</li>
+<li>可以指定你要依赖的包的版本，可以使用<strong>语义规则</strong></li>
 <li>方便你分享你的模块</li>
 </ul>
 <p>最少包含的元字段是name和version。详细的元字段信息见<a href="https://docs.npmjs.com/files/package.json">package</a></p>
@@ -61,14 +57,14 @@
 <p>npm初始化项目时可以和用户交互填写这些元数据<code>npm init</code>,有些时候我们只是想很快的初始化文件，而不想立马填写元数据信息，可以使用--yes(-y)参数来生成默认的配置，达到快速初始化的目的</p>
 <h2 id="-">使用中其他命令</h2>
 <ul>
-<li>更新包 在package.json所在目录 <code>npm update</code> </li>
-<li>查看是否有更新包```npm outdated``````</li>
-<li>卸载包<code>npm uninstall &lt;package_name&gt;</code></li>
+<li>更新包 在package.json所在目录执行 <code>npm update</code> </li>
+<li>查看是否有更新包<code>npm outdated</code></li>
+<li>卸载包<code>npm uninstall/remove &lt;package_name&gt;</code></li>
 <li>全局安装卸载添加 <code>-g</code>参数,例：<code>npm uninstall -g express</code></li>
 <li>更新全局安装包 <code>npm install -g &lt;package_name&gt;</code></li>
 </ul>
 <h2 id="-">发布包</h2>
-<p>首先要创建npm registry 的用户，如果没有需要创建一个<code>npm adduser</code>如果你已经在website上有了一个账号可以使用<code>npm login</code>在客户端存储你的凭证信息。</p>
+<p>首先要创建npm registry 的用户，如果没有需要创建一个<code>npm adduser</code>如果你已经在website上有了一个账号可以使用<code>npm login</code>在客户端存储你的凭证信息,如果你已经登陆了，可以使用<code>npm who</code>来查看登陆账号。</p>
 <p>然后执行<code>npm publish</code>来发布包，需要注意的是除了.gitignore和.npmignore声明的文件外其他一律会包含在包里，</p>
 <p>发布之后可以访问 <a href="https://npmjs.com/package/">https://npmjs.com/package/</a><package_name>来检查发布结果。</p>
 <p>更新已经发布过的包时首先使用<code>npm version &lt;update_type&gt;</code>更新包中package.json的version信息。这里的update_type字段可以是patch, minor, major。除此之外这个命令还会创建一个git tag，这里需要注意以下。</p>
@@ -137,9 +133,42 @@ for (var i = 0; i &lt; 10; i ++) {
 <h2 id="npm-scripts">npm scripts</h2>
 <p>阮大已经总结好<a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html">npm scripts 使用指南</a></p>
 <h2 id="npm-cli">npm CLI</h2>
-<p>TODO</p>
+<p>常用命令 </p>
+<pre><code class="lang-shell">npm adduser // 注册npm registry用户
+npm config set &lt;key&gt; [&lt;value&gt;]
+npm config delete &lt;key&gt;
+npm config list
+npm config edit
+npm init    // 初始化项目
+npm install // 安装依赖
+npm ls      // 同名list，la,ll
+npm outdated  // 检查更新
+npm publish   //发布
+npm uninstall
+npm whoami
+</code></pre>
 <h2 id="configuring-npm">configuring npm</h2>
-<p>TODO</p>
+<p>npm 可以从很多地方读取配置信息，读取的优先级顺序如下：</p>
+<ul>
+<li><p>通过命令行读取 </p>
+<pre><code class="lang-shell">npm --foo bar  //set foo to bar
+</code></pre>
+</li>
+<li><p>环境变量</p>
+<p>设置前缀‘npm<em>config</em>’的环境变量</p>
+<pre><code class="lang-shelll">npm_config_foo=bar
+</code></pre>
+</li>
+<li><p>.npmrc文件</p>
+<ul>
+<li>存放在项目根目录的.npmrc文件</li>
+<li>存放在用户根目录下的.npmrc. windows下是%USERPROFILE%/.npmrc,Linux下是$HOME/.npmrc</li>
+<li>全局.npmrc文件，node全局.npmrc文件，windows是%APPDATA%/etc/.npmrc,Linux 是$PREFIX/etc/.npmrc</li>
+<li>npm内置的.npmrc</li>
+<li>npm默认配置。你可以通过npm config ls -l 查看默认配置</li>
+</ul>
+</li>
+</ul>
 <h2 id="links">links</h2>
 <ul>
 <li><a href="https://docs.npmjs.com/">npm docs</a></li>
