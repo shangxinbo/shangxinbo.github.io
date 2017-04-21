@@ -13,8 +13,8 @@
    HTML4.01/XHTML1.0/XHTML1.1的有效DTD
 
    -  Strict 不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）
-   - Transitional 包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）
-   - Frameset  包括展示性的和弃用的元素（比如 font）。允许框架集（Framesets）。
+   -  Transitional 包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）
+   -  Frameset  包括展示性的和弃用的元素（比如 font）。允许框架集（Framesets）。
 
    在每个有效的DTD下的可用标签详见 http://www.w3school.com.cn/tags/html_ref_dtd.asp
 
@@ -137,4 +137,7 @@
    audio,canvas,video{display:inline-block;}
    ```
 
-   ​
+6. visual formatting model(视觉格式化模型)
+
+7. ​
+
