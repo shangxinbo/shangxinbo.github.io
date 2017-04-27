@@ -43,6 +43,24 @@ HTML4.01/XHTML1.0/XHTML1.1的有效DTD
 
 ####  关于HTML5 & XHTML5
 
-HTML5 是HTML的最新规范版本，之所以不需要制定DTD是因为HTML5规范里定义了浏览器解析规则，能够保证浏览器在不同设备上解析一样的规则。而HTML5是一个词汇两种序列化(HTML,XML)
+HTML5 是HTML的最新规范版本，而HTML5是一个词汇两种序列化(HTML,XML)
+
+HTML5不需要DTD，讲到这个需要详细解释一下：
+
+>  HTML 并不能很容易地用常规解析器所需的与上下文无关的语法来定义。这初看起来很奇怪：HTML 和 XML 非常相似。有很多 XML 解析器可以使用。HTML 存在一个 XML 变体 (XHTML)，那么有什么大的区别呢？
+>
+> 区别在于 HTML 的处理更为“宽容”，它允许您省略某些隐式添加的标记，有时还能省略一些起始或者结束标记等等。和 XML 严格的语法不同，HTML 整体来看是一种“软性”的语法。
+>
+> 概括地说，HTML 无法很容易地通过常规解析器解析（因为它的语法不是与上下文无关的语法），也无法通过 XML 解析器来解析。
+>
+> 所以HTML 的定义采用了 DTD 格式。它包括所有允许使用的元素及其属性和层次结构的定义。
+>
+> __然而，HTML DTD 无法构成与上下文无关的语法。__
+>
+> 由于不能使用常规的解析技术，浏览器就创建了自定义的解析器来解析 HTML。所以HTML5 规范详细地描述了解析算法。所以HTML5 不需要DTD声明也能解析。
+
+
 
 https://www.w3.org/TR/html/introduction.html#html-vs-xhtml
+
+https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/
