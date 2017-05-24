@@ -4,29 +4,25 @@
 
 ## HTML
 
-1. <!DOCTYPE>文档声明
+1. <!DOCTYPE>作用，标准模式和兼容模式的不同
 
    用来定义XML或(X)HTML的文件类型，浏览器会使用它来判断文档类型， 决定使用何种协议来解析，以及切换浏览器模式
 
    HTML4.01/XHTML1.X中<!DOCTYPE>声明应用DTD,因为HTML4基于SGML,其中DTD规定了标记语言的规则，以使浏览器正确解析文档内容；HTML5不基于SGML，所以不需要应用DTD
 
-   HTML4.01/XHTML1.0/XHTML1.1的有效DTD
-
-   -  Strict 不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）
-   -  Transitional 包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）
-   -  Frameset  包括展示性的和弃用的元素（比如 font）。允许框架集（Framesets）。
-
-   在每个有效的DTD下的可用标签详见 http://www.w3school.com.cn/tags/html_ref_dtd.asp
-
    如果不设置DOCTYPE声明，或者声明DOCTYPE及DTD不合法，浏览器会启动混杂模式渲染，就会出现很多怪异行为，比如盒子模型不正常等现象，所以为了让浏览器以标准模式渲染需要我们准确写DOCTYPE声明
 
-2. 浏览器组成及工作原理
+2. 页面导入样式时，使用link和@import的区别
 
-   感谢[以色列开发人员塔利·加希尔的研究成果](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)
+   link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载。
 
-3. HTML5  Application Cache
+3. 浏览器内核的理解
 
-   [应用缓存初级使用指南](https://www.html5rocks.com/zh/tutorials/appcache/beginner/)
+   浏览器内核主要分为渲染引擎和js引擎
+
+   常见的渲染引擎有Trident,Gecko,Webkit,Blink
+
+   常见的js引擎有spiderMonkey,V8,Chakra
 
 4. cookie vs sessionStorage vs localStorage
 
@@ -39,13 +35,17 @@
    - 使用URL query传参，形如 `/project/name?tag=1`
    - 使用本地存储方案cookie/storage 
 
-6. Page Visibility API
+6. HTML5的离线存储怎么使用
+
+   application/cache 已经不被支持,详情见[使用应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache)
+
+7. Page Visibility API
 
    当一个网页可见或点击选中状态时Page Visibility API可以让你获取到这个状态，属性有`document.hidden/document.visibilityState`,监听事件`document.addEventListener('visibilitychange',callback)`
 
    详情见[MDN -> Page Visibility API](https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API)
 
-7. 网页验证码是做什么用的
+8. 网页验证码是做什么用的
 
    区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水； 有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试。
 
@@ -55,11 +55,7 @@
 
    ![盒子模型](https://leohxj.gitbooks.io/front-end-database/html-and-css-basic/assets/box-model.svg)
 
-   witdh = content-width + padding-left + padding-right + border-left + border-right
-
-   height = content-height + padding-top + padding-bottom + border-top + border-bottom
-
-   margin叠加
+2. margin叠加
 
    当两个或更多个垂直边距相遇时， 它们将形成一个外边距。这个外边距的高度等于两个发生叠加的外边距的高度中的较大者。但是注意只有普通文档流中块框的垂直外边距才会发生外边距叠加。 行内框、 浮动框或绝对定位框之间的外边距不会叠加。垂直外边距叠加一般的三种情况：
 
@@ -67,7 +63,25 @@
    - 相邻元素叠加 相邻的两个元素， 如果它们的上下边距相遇，即会产生叠加。
    - 包含（父子）元素叠加 包含元素的外边距隔着 父元素的内边距和边框， 当这两项都不存在的时候， 父子元素垂直外边距相邻， 产生叠加。 添加任何一项即会取消叠加。
 
-2. 如何让一个元素相对屏幕水平垂直居中
+3. css选择器权重计算(specificity)
+
+   - 内联样式表的权值1000
+   - id选择器的权值100
+   - class类选择器，属性选择器，伪类选择器权值10
+   - 元素选择器，伪元素选择器权值1
+
+4. css的层叠顺序
+
+   | 顺序   | 来源   | 重要程度       |
+   | ---- | ---- | ---------- |
+   | 1    | 用户代理 | 普通         |
+   | 2    | 用户代理 | !important |
+   | 3    | 用户   | 普通         |
+   | 4    | 页面作者 | 普通         |
+   | 5    | 页面作者 | !important |
+   | 6    | 用户   | !important |
+
+5. 如何让一个元素相对屏幕水平垂直居中
 
    - css2,给子元素添加如下样式，关键点:绝对定位;top:50%,left:50%;margin-left:-元素宽1/2,margin-top:-元素高1/2;
 
@@ -100,20 +114,24 @@
      justify-content: center;	/* 水平居中 */
      ```
 
-3. display
+6. display
 
    - block 块类型。默认宽度为父元素宽度，可设置宽高，换行显示。
    - inline 行内元素类型。默认宽度为内容宽度，不可设置宽高，同行显示
    - inline-block 默认宽度为内容宽度，可以设置宽高，同行显示。
+   - none  不显示
+   - list-item 
+   - table
+   - inherit 继承父元素
 
-4. position 
+7. position 
 
    - absolute  相对于第一个position不为static的父元素定位
    - fixed  老版本ie不支持。相对于浏览器窗口定位
    - relative 相对于正常位置定位
    - static 默认值，没有定位，在正常的文档流中，会忽略`top,left,bottom,right,z-index`声明
 
-5. 初始化css
+8. 初始化css
 
    不同的浏览器默认的样式可能不尽相同，所以开发时的第一件事可能就是如何把它们统一,以下是我们团队的初始化css内容
 
@@ -137,7 +155,50 @@
    audio,canvas,video{display:inline-block;}
    ```
 
-6. visual formatting model(视觉格式化模型)
+9. inline-block元素间隙
 
-7. ​
+10. 什么是文档流(普通流normal-flow)
+
+   在窗口**自上而下**分成一行行, 并在每行中按**从左至右**的顺序排放元素,即为文档流.
+
+   CSS中脱离文档流，就是将元素从普通的布局排版中拿走，其他盒子在定位的时候，会当做脱离文档流的元素不存在而进行定位。脱离文档流的元素已经不属于文档流的范畴中，相当于自定义排位，就相当于它可以不用再排队了，想去哪里就去哪里。
+
+11. 如何防止浮动造成的父元素高度塌陷
+
+    详细了解 http://www.iyunlu.com/view/css-xhtml/55.html
+
+    ```css
+    .clearfix:after {
+    	content:"."; 
+    	display:block; 
+    	height:0; 
+    	visibility:hidden; 
+    	clear:both; 
+    }
+    ```
+
+12. 使用css预处理器么？
+
+    less,sass, Stylus
+
+13. css后处理器
+
+    PostCSS
+
+14. css匹配规则是从左向右还是从右向左
+
+    简言之就是 浏览器css匹配核心算法的规则是以 right-to-left 方式匹配节点的。
+    这样做是为了使规则能够快、准、狠地与render树上的节点匹配，通俗地将就是 **就近原则**。
+
+15. 元素竖向的百分比设定是相对于容器的高度吗？
+
+    https://jsfiddle.net/shangxinbo/q27bxtgb/
+
+    百分比属性值其实没有竖向和横向之分，依据是在属性定义里，属性定义里规定百分比相对的值是什么就是什么这里的padding-top和padding-bottom都是相对于width而言的，具体见css2.1规范http://www.ayqy.net/doc/css2-1/box.html#padding-properties
+
+16. `::after`和`:after`区别
+
+    双引号的出现是CSS为了区分伪类和伪元素的
+
+    ​
 
