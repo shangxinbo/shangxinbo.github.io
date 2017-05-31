@@ -216,7 +216,12 @@ console.log(a2.arr)  //[1,2,3,4]
 <p>引用数据类型存储在堆(heap),占用空间大，大小不固定，引用数据类型在栈中存储了指针，该指针指向堆中实体的起始地址，当解释器寻找引用值时，先找到栈中的地址然后再取得实体。</p>
 <p><img src="https://segmentfault.com/img/bVlSc9" alt=""></p>
 </li>
-<li><p>​</p>
+<li><p>new 操作符都做了什么</p>
+<ul>
+<li>创建一个空对象，并this变量引用该对象同时继承该函数的原型</li>
+<li>属性和方法被加入this引入的对象中</li>
+<li>新创建的对象由this所引用，并且最后隐式的返回this</li>
+</ul>
 </li>
 </ol>
 </body></html>
