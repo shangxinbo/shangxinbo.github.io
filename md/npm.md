@@ -136,7 +136,38 @@ npm初始化项目时可以和用户交互填写这些元数据`npm init`,有些
 
 ## npm scripts
 
-阮大已经总结好[npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
+npm 允许在package.json文件里使用scripts字段定义脚本命令
+
+```json
+{
+  // ...
+  "scripts": {
+    "build": "node build.js"
+  }
+}
+```
+
+每一组key/value值对应一条脚本命令。你可以在命令行下执行`npm run <script>`来运行设置的脚本。这里npm run的脚本实质是新建一个shell，几乎所有的shell命令都可以在这里作为脚本命令，比较特别的是当执行脚本时，新建的shell会把node_modules/.bin子目录加入到环境变量（PATH变量）中，执行结束后PATH变量恢复原样，这意味着当前目录node_modules/.bin子目录中的所有脚本都可以直接调用而不需要加上路径。
+
+当执行多条脚本命令时可以使用`&`符号并行执行
+
+`npm run scrit1 & npm run script2 //script1 和script2 同时执行`
+
+也可使用`&&`继发执行
+
+`mpm run script1 && npm run script2 //script1 执行完后再执行script2`
+
+每个脚本有两个钩子`pre`和`post`,比如你要在build脚本执行前执行另一个脚本在执行后执行另一个脚本
+
+```json
+{
+  "prebuild":"script1",
+  "build":"script2",
+  "postbuild":"script3"
+}
+```
+
+但需要注意，双重的pre/post无效，如preprebuild是无效的
 
 ## npm CLI 常用命令
 
@@ -218,3 +249,4 @@ npm2的依赖是嵌套处理的，会导致目录嵌套很深的问题。而npm3
 
 * [npm docs](https://docs.npmjs.com/)
 * [npm doc in chinese](http://coloration.cc/npmjs-documentation/)
+* [npm scripts 使用指南](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
