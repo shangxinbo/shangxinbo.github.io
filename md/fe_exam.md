@@ -221,5 +221,39 @@
 
    Undefined,Null,Boolean,Number,String,Symbol(ES6)
 
-2. ​
+2. 原型链
+
+   ```javascript
+   var A = function(){
+     this.arr = [1,2,3]
+   }
+   var a1 = new A()
+   var a2 = new A()
+   a1.arr.push(4)
+   //new 为每个实例分配一个内存
+   console.log(a2.arr)  //[1,2,3]
+   ```
+
+   ```javascript
+   var A = function(){
+     this.arr = [1,2,3]
+   }
+   var B = function(){}
+   B.prototype = new A()
+   var a1 = new B()
+   var a2 = new B()
+   a1.arr.push(4)
+   //a1,a2 公用一个原型，而这个原型是A的实例
+   console.log(a2.arr)  //[1,2,3,4]
+   ```
+
+3. javascript的变量的内存占用
+
+   原始数据类型直接存储在栈（stack）中,占用空间小，大小固定
+
+   引用数据类型存储在堆(heap),占用空间大，大小不固定，引用数据类型在栈中存储了指针，该指针指向堆中实体的起始地址，当解释器寻找引用值时，先找到栈中的地址然后再取得实体。
+
+   ![](https://segmentfault.com/img/bVlSc9)
+
+4. ​
 
