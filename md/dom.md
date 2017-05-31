@@ -6,9 +6,19 @@
 
 文档对象模型 (DOM) 是HTML和XML文档的编程接口。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。DOM 将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合。简言之，它会将web页面和脚本或程序语言连接起来，DOM就是浏览器为javascript提供的一系列接口，通过这些接口我们可以操作web页面，但是DOM不是编程语言，该模型独立于编程语言，比如除了js外python也是可以操作DOM的，然而一般讲的DOM API 是指 DOM + JS。
 
-一个web页面就是一个文档。这个文档可以在浏览器窗口或作为HTML源码显示出来。但上述两个情况中都是同一份文档。文档对象模型（DOM）提供了对同一份文档的另一种表现，存储和操作的方式。 
+## W3C VS WHATWG
 
-[W3C DOM](http://www.w3.org/DOM/) 和[WHATWG DOM](https://dom.spec.whatwg.org/)标准在绝大多数现代浏览器中都有对DOM的基本实现。许多浏览器提供了对W3C标准的扩展，所以在使用时必须注意，文档可能会在多种浏览器上使用不同的DOM来访问。
+W3C(World Wide Web Consortium)万维网联盟，1994年成立。W3C标准是为解决web应用中不同平台，技术和开发者带来的兼容问题，制定的一系列Web应用开发者和内容提供者遵循的标准。但是W3C制定的标准并不是强制标准而是推荐标准。W3C制定的标准成为规范（specifications）
+
+WHATWG(Web Hypertext Application Technology Working Group)网页超文本应用技术工作小组，2004年由Apple,Mozilla,Opera公司组成，目前的技术编者在Google任职，微软公司没有在其组织。成立之初是为了响应W3C对网页标准发展缓慢，且试图放弃HTML转而发展XML的目的。WHATWG制定的标准成为live Standard
+
+由于历史原因HTML5其实是WHATWG先规范化的，因为W3C准备放弃HTML了。后来WHATWG推荐W3C规范HTML5，被认可后才在2008年开始HTML5的规范化。但两者的理念分裂，WHATWG认为HTML5应该是一直更新的动态标准，所以起名叫做'HTML Living Standard'，意指不再依赖于版本号；而W3C认为应该形成固定的规范所以命名成新一代的HTML标准，即HTML5。
+
+[W3C DOM specification](https://www.w3.org/TR/dom/)
+
+[WHATWG DOM Living Standard](https://dom.spec.whatwg.org/) 
+
+这两个标准几乎是相同的，W3C的specification是依据WHATWG standard的快照，只是将最低限度的处理差异，将没有被实施的standard删除掉了，所以W3C DOM specification 是WHATWG DOM Living Standard的子集。
 
 ## DOM API使用的数据类型
 
@@ -125,3 +135,5 @@ type; target;currentTarget;stopPropagation();preventDefault();clientX,clientY;sc
 [DOM概述](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction)
 
 [DOM中空白节点引起的节点选择问题](https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/Whitespace_in_the_DOM)
+
+https://dom.spec.whatwg.org/
