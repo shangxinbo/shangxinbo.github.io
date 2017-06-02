@@ -261,3 +261,37 @@
    * 属性和方法被加入this引入的对象中
    * 新创建的对象由this所引用，并且最后隐式的返回this
 
+5. 数组排序算法
+
+   ```javascript
+   //随机排序
+   var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+   //solution1
+   function randSort1(arr) {
+       for (var i = 0, len = arr.length; i < len; i++) {
+           var rand = parseInt(Math.random() * len)
+           var temp = arr[rand]
+           arr[rand] = arr[i]
+           arr[i] = temp
+       }
+       return arr
+   }
+   //solution2
+   function randSort2(arr) {
+       var mixedArray = []
+       while (arr.length > 0) {
+           var randomIndex = parseInt(Math.random() * arr.length)
+           mixedArray.push(arr[randomIndex])
+           arr.splice(randomIndex, 1)
+       }
+       return mixedArray
+   }
+   //solution3
+   arr.sort(function(){
+     	return Math.random() - 0.5;
+   })
+
+   ```
+
+   ​
+
