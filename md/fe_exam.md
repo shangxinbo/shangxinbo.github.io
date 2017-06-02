@@ -261,10 +261,9 @@
    * 属性和方法被加入this引入的对象中
    * 新创建的对象由this所引用，并且最后隐式的返回this
 
-5. 数组排序算法
+5. 随机排序
 
    ```javascript
-   //随机排序
    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
    //solution1
    function randSort1(arr) {
@@ -290,7 +289,6 @@
    arr.sort(function(){
      	return Math.random() - 0.5;
    })
-
    ```
 
    ​
