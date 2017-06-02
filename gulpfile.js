@@ -43,7 +43,7 @@ gulp.task('list', function () {        // update diary.html
             })
         }
         arr.sort(function (a, b) {     //sort by time
-            return a.time < b.time
+            return new Date(b.time) - new Date(a.time)
         })
         for (let j = 0; j < arr.length; j++) {
             table += '<tr><td><a href="' + arr[j]['href'] + '">' + arr[j]['title'] + '</a></td><td>' + arr[j]['time'] + '</td></tr>'
