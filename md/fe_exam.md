@@ -257,9 +257,9 @@
 
 4. new 操作符都做了什么
 
-   * 创建一个空对象，并this变量引用该对象同时继承该函数的原型
-   * 属性和方法被加入this引入的对象中
-   * 新创建的对象由this所引用，并且最后隐式的返回this
+   * 创建一个空对象，this变量指向该对象同时继承该函数的原型
+   * 构造函数的属性和方法被加入this指向的对象中
+   * 如果构造函数返回一个非引用类型的数据，则返回这个数据，如果构造函数返回值类型数据或者没有返回值，则返回这个this指向的新对象 
 
 5. 随机排序
 
@@ -293,5 +293,21 @@
 
 6. javascript作用域链
 
-   全局函数
+7. this指向函数的直接调用者
+
+8. eval('('+str+')')处理json的原理是什么
+
+   eval接收一个字符串解析成js代码执行，一个json字符串形式执行形成一个对象，类似于('{"name":"xiaoming"}')=> {name:"xiaoming"}
+
+9. undefined和null的区别
+
+   undefined是声明未定义
+
+   null是定义为空值
+
+10. ["1", "2", "3"].map(parseInt)输出是什么
+
+   Array.prototype.map(callback(value,index,array))
+
+   parseInt(string,radix) //radix 数值基数，介于2~36之间
 
