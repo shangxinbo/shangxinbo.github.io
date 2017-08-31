@@ -1,0 +1,157 @@
+<!DOCTYPE html>            <html lang="en">            <head>                <meta charset="UTF-8">                <title></title>                <link href="../css/github-markdown.css" rel="stylesheet" />                <link href="../css/article.css" rel="stylesheet" />            </head>            <body class="markdown-body"><h1 id="js">js</h1>
+<p><em>2017-07-23</em></p>
+<ol>
+<li><p>javascript在Netscape Navigator2上开始使用，开始叫LiveScript,发布前为了搭Java的顺风车，改名JavaScript.随后在Netscape Navigator3上发布Javascript1.1,之后IE3加入JScript，实质是另一个JavaScript的实现，为了避开Netscape授权问题所以叫JScript。1997年Netscape以JavaScript1.1为蓝本提交给ECMA进行标准化。</p>
+</li>
+<li><p>JavaScript 组成</p>
+<ul>
+<li>ECMAScript</li>
+<li>DOM</li>
+<li>BOM</li>
+</ul>
+</li>
+<li><p>ECMAScript4太激进，被放弃，ECMAScript3.1成为ECMAScript5</p>
+</li>
+<li><p>ECMAScript标准规定对于ECMAScript的实现要支持Unicode字符标准。Unicode是计算机科学领域里的一项业界标准。它对世界上大部分的文字系统进行了整理、编码，使得电脑可以用更为简单的方式来呈现和处理文字。目前最新的版本为2016年6月21日公布的9.0.0。Unicode组织和ISO-10646工作小组工作内容相互补充，而Unicode标准和ISO-10646标准也相互兼容的方向发展</p>
+</li>
+<li><p><a href="http://kangax.github.io/compat-table/es5/">ECMAScript567浏览器兼容表</a></p>
+</li>
+<li><p>DHTML是指动态HTML。在IE4和Netscape Navigator4上实现不用重新加载页面就能更改其外观和内容，被网景和微软成为4.X代浏览器的新技术。然而DHTML并不是标准只是一个营销术语，所以微软和网景在DHTML上各抒己见，为了统一实现，W3C开始制定DOM标准。DOM1 于1998年10月成为W3C推荐标准。依据WHATWG的DOM Living Standard，最新版本DOM4,W3C关于DOM的工作小组似乎都关闭了，DOM4的Recommendation 也是抄的WHATWG的，只不过做了点保守的调整罢了。</p>
+</li>
+<li><p>BOM 浏览器对象模型，并不是一个真正的标准，在IE3和Netscape Navigator3中开发人员可以通过BOM控制浏览器显示页面以外的部分。HTML5致力于把很多BOM功能写入正式规范。</p>
+</li>
+<li><p><code>&lt;script&gt;</code>出现的顺序决定外部js的解析顺序。除非设置defer和async属性。defer表示脚本可以延迟到文档完全被解析和显示之后再执行。async表示立即下载脚本但不妨碍页面中的其他操作。defer的脚本会在浏览器遇到<code>&lt;/html&gt;</code>标签后再执行。HTML5规范要求脚本按照他们出现的顺序执行，且在DOMConentLoaded事件前执行。现实中脚本并不会按照顺序执行，也不一定会在DOMContentLoaded事件之前，所以最好还是把脚本放到body后边最好。</p>
+</li>
+<li><p>ECMAScript 标识符指变量，函数，属性，函数参数的名字。</p>
+<ul>
+<li>第一个必须是字母|_|$</li>
+<li>其他字符是字母|_|$|数字</li>
+<li>不能把关键字，保留字，true,false,null用作标识符</li>
+</ul>
+<p>标识符中的字母可以是扩展的ASCII或Unicode字符。</p>
+</li>
+<li><p>typeof 监测一个变量的基本数据类型，intanceof 监测一个变量是否是某个引用类型的实例</p>
+</li>
+<li><pre><code class="lang-javascript">var m1 
+console.log(typeof m1) //undefined 声明未定义
+console.log(typeof m2) //undefined 未声明
+</code></pre>
+</li>
+<li><p>null值表示一个空对象指针，所以typeof null 返回‘object’</p>
+</li>
+<li><pre><code class="lang-javascript">console.log(null==undefined) //true   undefined值派生自null值
+console.log(null===undefined) //false
+</code></pre>
+</li>
+<li><p><a href="https://stackoverflow.com/questions/44453474/something-about-number-max-value">https://stackoverflow.com/questions/44453474/something-about-number-max-value</a></p>
+<pre><code class="lang-javascript">Number.MAX_VALUE  //能够表示的最大值 
+Number.MIN_VALUE  //能够表示的最小值    
+(Number.MAX_VALUE+123)==Number.MAX_VALUE   //true
+(Number.MAX_VALUE+Number.MAX_VALUE)==Number.MAX_VALUE  //false
+console.log(5.3e-324)  //5e-324 why?
+1.2+1.4        //2.5999999999999996
+1.2e10+1.4e10  //26000000000
+</code></pre>
+</li>
+<li><p>NaN 表示本来要返回数值的操作数未返回数值的情况，这样避免抛出错误了。所以任何数学运算都不会抛出错误。</p>
+</li>
+<li><p>数值转换方法比较</p>
+<p>Number() 可用于转换任何数据类型</p>
+<p>parseInt() 只用于转换字符串类型，如果第一个字符不是数字字符或负号就会返回NaN,如果是则解析第二个字符，知道解析完所有后续字符或遇到了一个非数字字符</p>
+<pre><code class="lang-javascript">parseInt(false) //NaN
+Number(false)  //0
+Numver(&#39;1a&#39;)  //NaN
+parseInt(&#39;1a&#39;) //1
+parseInt(&#39;22.5&#39;) //22
+parseInt(&#39;10&#39;,2) //2 按基数解析
+parseInt(&#39;20&#39;,2) //NaN
+</code></pre>
+</li>
+<li><p>递增递减操作符</p>
+<p>前置操作符，在语句被求值以前改变的。</p>
+<pre><code class="lang-javascript">var age=29
+var anotherage = --age + 2    
+console.log(age)  //28
+console.log(anotherage) 30
+</code></pre>
+<p>后置操作符，在语句求值以后才执行</p>
+<pre><code class="lang-javascript">var num1 = 2
+var num2 = 20
+var num3 = num1-- + num2   //22
+var num4 = num1 + num2   //21
+</code></pre>
+</li>
+<li><p><code>!!obj = Boolean(obj)</code></p>
+</li>
+<li><p>任何数与NaN进行比较都是false</p>
+<pre><code class="lang-javascript">NaN&lt;3 //false
+NaN&gt;=3 //false
+</code></pre>
+</li>
+<li><p>break和continue在循环中精确控制代码执行</p>
+<p>break立即跳出循环；continue立即跳出本次循环，继续下次循环</p>
+<pre><code class="lang-javascript">var num = 0
+for(var i=0;i&lt;10;i++){
+  if(i%5==0){
+    break
+  }
+  num++
+}
+console.log(num) //4
+/*------------------*/
+var num=0
+for(var i=0;i&lt;10;i++){
+  if(i%5==0){
+    continue
+  }
+  num++
+}
+console.log(num) //8
+/*------------------*/
+var num = 0
+outer:
+for(var i=0;i&lt;10;i++){
+  for(var j=0;j&lt;10;j++){
+    if(i==5&amp;&amp;j==5){
+      break outer
+    }
+    num++
+  } 
+}
+console.log(num)  //55
+/*------------------*/
+var num = 0
+outer:
+for(var i=0;i&lt;10;i++){
+  for(var j=0;j&lt;10;j++){
+    if(i==5&amp;&amp;j==5){
+      continue outer
+    }
+    num++
+  } 
+}
+console.log(num)  //95
+</code></pre>
+</li>
+<li><p>switch 执行语句比较时使用的是全等比较</p>
+</li>
+<li><p>ECMAScript所有参数传递都是值传递，不可能通过引用传递值</p>
+</li>
+<li><p>延长作用域链</p>
+<ul>
+<li>try-catch 语句的catch块</li>
+<li>with语句</li>
+</ul>
+<p>这两个语句都会在作用域链的前端添加一个变量对象。对with语句来说，会将指定的对象添加到作用域链中。对catch语句来说，会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明</p>
+</li>
+<li><p>IE8引入了一个新的概念“文档模式”（document mode）。文档模式决定了你可以使用哪几个级别的css，可以在JavaScript中使用哪些API,以及如何对待文档类型(doctype).要强制浏览器以某种模式渲染页面可以</p>
+<p><code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IEVersion&quot; /&gt;</code></p>
+<p>IEVersion 有以下几种值</p>
+<ul>
+<li>Edge,始终以最新的文档模式渲染页面</li>
+<li>EmulateIE9,EmulateIE8……如果有文档类型声明则以IE9,IE8…标准模式渲染页面,否则文档模式设置为IE5</li>
+<li>9,8,7 强制以IE9,IE8,IE7标准模式渲染页面，忽略文档类型声明</li>
+</ul>
+</li>
+</ol>
+</body></html>
