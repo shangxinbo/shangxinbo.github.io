@@ -6,7 +6,7 @@
 
 常用邮箱：314911714@qq.com
 
-常用电话：18612119498
+常用电话：186****9498
 
 工作年限：5年
 
@@ -16,7 +16,7 @@
 
 ![](https://img.shields.io/badge/javascript-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/HTML5-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/CSS3-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/ES6-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Vue-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/React-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Webpack-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Angular-秩序白银-lightgrey.svg?style=flat-square) ![](https://img.shields.io/badge/Backbone-秩序白银-lightgrey.svg?style=flat-square) ![](https://img.shields.io/badge/jQuery-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/FIS-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Sea.js&Require.js-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/Bootstrap-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/Echarts-尊贵铂金-orange.svg?style=flat-square) ![](https://img.shields.io/badge/D3.js-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/ReactNative-秩序白银-lightgrey.svg?style=flat-square) ![](https://img.shields.io/badge/Cordova-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/PHP-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/node-尊贵铂金-orange.svg?style=flat-square) ![](https://img.shields.io/badge/Axios-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/bash&linux-秩序白银-lightgrey.svg?style=flat-square) ![](https://img.shields.io/badge/jenkins-荣耀黄金-yellow.svg?style=flat-square)
 
-> 这份简历在github上有托管，实时更新
+> 这份简历在github上有托管，实时更新 https://github.com/shangxinbo/shangxinbo.github.io/blob/master/md/me.md
 
 ### 教育
 
