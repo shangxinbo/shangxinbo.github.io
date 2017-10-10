@@ -75,7 +75,17 @@
 
 15. HTML中元素分为那几种类型（HTML5,HTML4）HTML5的内容模型
 
+16. [表单验证](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation)
 
+17. indexedDB
+
+18. requestAnimationFrame(https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5)
+
+19. 现代浏览器icon解决方案对比
+
+    * SVG
+    * PNG
+    * FONT
 
 
 
