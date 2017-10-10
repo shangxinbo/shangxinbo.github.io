@@ -2,13 +2,10 @@
 <p><em>2017-04-19</em></p>
 <h2 id="html">HTML</h2>
 <ol>
-<li><p>&lt;!DOCTYPE&gt;作用，标准模式和兼容模式的不同</p>
-<p>用来定义XML或(X)HTML的文件类型，浏览器会使用它来判断文档类型， 决定使用何种协议来解析，以及切换浏览器模式</p>
-<p>HTML4.01/XHTML1.X中&lt;!DOCTYPE&gt;声明应用DTD,因为HTML4基于SGML,其中DTD规定了标记语言的规则，以使浏览器正确解析文档内容；HTML5不基于SGML，所以不需要应用DTD</p>
-<p>如果不设置DOCTYPE声明，或者声明DOCTYPE及DTD不合法，浏览器会启动混杂模式渲染，就会出现很多怪异行为，比如盒子模型不正常等现象，所以为了让浏览器以标准模式渲染需要我们准确写DOCTYPE声明</p>
+<li><p>为什么HTML5 不需要DTD</p>
 </li>
 <li><p>页面导入样式时，使用link和@import的区别</p>
-<p>link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载。</p>
+<p>link会异步加载，不会影响浏览器对文档的处理。</p>
 </li>
 <li><p>浏览器内核的理解</p>
 <p>浏览器内核主要分为渲染引擎和js引擎</p>
@@ -40,6 +37,31 @@
 </li>
 <li><p>HTML meta viewport</p>
 <p>手机浏览器是把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。移动版的 Safari 浏览器最新引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放，其他手机浏览器也基本支持。</p>
+</li>
+<li><p>什么叫渐进增强，优雅降级</p>
+<ul>
+<li>渐进增强 progressive enhancement：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。</li>
+<li>优雅降级 graceful degradation：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</li>
+</ul>
+</li>
+<li><p>什么是XSS，如何防止XSS攻击</p>
+<p>XSS是一种前端代码注入的攻击，它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。一般这种攻击注入的是JavaScript代码，不过如果是动态网页的话被注入的代码也可以是Java等后端代码。攻击成功后攻击者可能得到更高的权限，如获取cookie，不用登录即可获取会话等。</p>
+<p>一般操作的流程是先在一个网页上表单中填写代码，发布成功后用户访问该页面，代码可执行。例如在input框中输入<code>/&gt;&lt;script&gt;alert(123)&lt;/script&gt;</code>发布成功后每个用户进入这个页面就会提示123。同样可以获取其他用户信息比如登录信息或者其他，也可以使页面跳转到其他链接。防御手段是对下列特殊字符进行编码：</p>
+<pre><code class="lang-html">&amp;     –&gt;     &amp;amp;
+&lt;     –&gt;     &amp;lt;
+&gt;     –&gt;     &amp;gt;
+”     –&gt;     &amp;quot;
+‘     –&gt;     &amp;#x27;
+/     –&gt;     &amp;#x2f;
+</code></pre>
+</li>
+<li><p>CSRF攻击</p>
+</li>
+<li><p>Clickjacking攻击</p>
+</li>
+<li><p>link标签可以放到head之外的标签元素么</p>
+</li>
+<li><p>HTML中元素分为那几种类型（HTML5,HTML4）HTML5的内容模型</p>
 </li>
 </ol>
 <h2 id="css">CSS</h2>
@@ -218,9 +240,9 @@ console.log(a2.arr)  //[1,2,3,4]
 </li>
 <li><p>new 操作符都做了什么</p>
 <ul>
-<li>创建一个空对象，并this变量引用该对象同时继承该函数的原型</li>
-<li>属性和方法被加入this引入的对象中</li>
-<li>新创建的对象由this所引用，并且最后隐式的返回this</li>
+<li>创建一个空对象，this变量指向该对象同时继承该函数的原型</li>
+<li>构造函数的属性和方法被加入this指向的对象中</li>
+<li>如果构造函数返回一个非引用类型的数据，则返回这个数据，如果构造函数返回值类型数据或者没有返回值，则返回这个this指向的新对象 </li>
 </ul>
 </li>
 <li><p>随机排序</p>
@@ -250,7 +272,21 @@ arr.sort(function(){
       return Math.random() - 0.5;
 })
 </code></pre>
-<p>​</p>
+</li>
+<li><p>javascript作用域链</p>
+</li>
+<li><p>this指向函数的直接调用者</p>
+</li>
+<li><p>eval(&#39;(&#39;+str+&#39;)&#39;)处理json的原理是什么</p>
+<p>eval接收一个字符串解析成js代码执行，一个json字符串形式执行形成一个对象，类似于(&#39;{&quot;name&quot;:&quot;xiaoming&quot;}&#39;)=&gt; {name:&quot;xiaoming&quot;}</p>
+</li>
+<li><p>undefined和null的区别</p>
+<p>undefined是声明未定义</p>
+<p>null是定义为空值</p>
+</li>
+<li><p>[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt)输出是什么</p>
+<p>Array.prototype.map(callback(value,index,array))</p>
+<p>parseInt(string,radix) //radix 数值基数，介于2~36之间</p>
 </li>
 </ol>
 </body></html>
