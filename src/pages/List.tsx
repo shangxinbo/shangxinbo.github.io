@@ -1,10 +1,10 @@
-import React from 'react'
-import StarSky from './StarSky'
 import '../assets/css/index.css'
+import StarSky from '../components/StarSky'
+import DocList from '../components/DocList'
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
       <div className="h-48 w-full flex justify-center relative">
         <StarSky starNum={80}>
           <div className="w-[1200px] flex flex-col justify-center items-start text-white">
@@ -18,9 +18,7 @@ const App = () => {
           </div>
         </StarSky>
       </div>
-      <div className="list-contain">
-        <h1 className="text-4xl font-bold text-blue-600">Hello, Tailwind CSS!</h1>
-      </div>
+      <DocList></DocList>
     </div>
   )
 }
