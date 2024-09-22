@@ -4,7 +4,7 @@ import path from 'node:path'
 const mdDirtoJson = (directory, outputFile) => ({
   name: 'generate-markdown-files-json',
   setup(build) {
-    build.onStart(() => {
+    build.onEnd(() => {
       // 递归遍历目录并获取文件详细信息
       const getFiles = (dir, fileList = {}, classes = []) => {
         const files = fs.readdirSync(dir)

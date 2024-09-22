@@ -21,6 +21,7 @@ const postcssProcessor = postcss([
   autoprefixer(),
 ])
 
+const args = process.argv.slice(2)
 const useWasm = os.arch() !== 'x64'
 const esbuild = (await import(useWasm ? 'esbuild-wasm' : 'esbuild')).default
 
@@ -105,13 +106,16 @@ const ctx = await esbuild.context({
   ],
 })
 
-await ctx.watch()
-
-let { host, port } = await ctx.serve({
-  servedir: 'dist',
-  host: 'localhost',
-  port: 8081,
-  fallback: 'index.html', // SPA项目
-})
-
-console.log(host, port)
+if (args.indexOf('--watch') >= 0) {
+  await ctx.watch()
+  await ctx.serve({
+    servedir: 'dist',
+    host: 'localhost',
+    port: 8081,
+    fallback: 'index.html', // SPA项目
+  })
+}
+else {
+  await ctx.rebuild()
+  process.exit(1)
+}
