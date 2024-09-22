@@ -20,14 +20,15 @@
     "tailwindcss": "^3.4.11"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "esbuild-plugin-copy": "^2.1.1",
-    "esbuild-plugin-path-alias": "^1.0.7",
     "@eslint/js": "^9.9.0",
     "@stylistic/eslint-plugin": "^2.8.0",
+    "@types/animejs": "^3.1.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
     "esbuild": "^0.23.1",
+    "esbuild-plugin-copy": "^2.1.1",
+    "esbuild-plugin-path-alias": "^1.0.7",
     "esbuild-style-plugin": "^1.6.3",
     "esbuild-wasm": "^0.23.1",
     "eslint": "^9.9.0",
