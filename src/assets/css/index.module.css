@@ -1,0 +1,20 @@
+.sky-bg {
+  background:linear-gradient(to right, #010343, #2f9fff);
+  z-index:0;
+}
+
+.shootingstars {
+  overflow: hidden;
+  transform:rotate(180deg)
+}
+
+.wish {
+  height: 4px;
+  width: 100px;
+  opacity: 0;
+  border-radius:3px;
+  background-color: white;
+  position: absolute;
+  background: linear-gradient(to right, white, transparent);
+  filter: drop-shadow(0 0 6px white);
+}
