@@ -1,25 +1,16 @@
 {
   "name": "newblog",
   "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "node ./build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@fontsource/roboto": "^5.1.0",
     "animejs": "^3.2.2",
-    "autoprefixer": "^10.4.20",
-    "esbuild-plugin-copy": "^2.1.1",
-    "esbuild-plugin-path-alias": "^1.0.7",
     "github-markdown-css": "^5.6.1",
     "marked": "^14.1.2",
-    "postcss": "^8.4.45",
-    "postcss-modules": "^6.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
@@ -28,6 +19,9 @@
     "tailwindcss": "^3.4.11"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "esbuild-plugin-copy": "^2.1.1",
+    "esbuild-plugin-path-alias": "^1.0.7",
     "@eslint/js": "^9.9.0",
     "@stylistic/eslint-plugin": "^2.8.0",
     "@types/react": "^18.3.3",
@@ -36,9 +30,12 @@
     "esbuild-style-plugin": "^1.6.3",
     "esbuild-wasm": "^0.23.1",
     "eslint": "^9.9.0",
+    "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "postcss": "^8.4.45",
+    "postcss-modules": "^6.0.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1"
   }

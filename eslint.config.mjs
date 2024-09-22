@@ -1,9 +1,10 @@
-import js from '@eslint/js'
 import globals from 'globals'
+import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
+import tseslint from 'typescript-eslint'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import stylistic from '@stylistic/eslint-plugin'
+import jsonPlugin from 'eslint-plugin-json'
 
 export default tseslint.config(
   { ignores: ['dist', 'node_modules'] },

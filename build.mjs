@@ -66,7 +66,7 @@ const markdownPlugin = {
 }
 
 const ctx = await esbuild.context({
-  entryPoints: ['./src/main.js'],
+  entryPoints: ['./src/main'],
   bundle: true,
   outdir: 'dist',
   minify: true,
@@ -85,7 +85,6 @@ const ctx = await esbuild.context({
     '.svg': 'dataurl',
   },
   plugins: [
-
     alias({
       '~': path.resolve(__dirname, './src'),
     }),
