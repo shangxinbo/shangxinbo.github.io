@@ -14,7 +14,7 @@ const useDocFile = () => {
 
   const getDoc = (file: string) => {
     return list.find((item) => {
-      return item.name = file
+      return item.name == file
     })
   }
 

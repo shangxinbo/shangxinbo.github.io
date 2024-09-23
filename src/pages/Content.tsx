@@ -11,8 +11,8 @@ const App = () => {
   const { getDoc, list } = useDocFile()
   const { file } = useParams()
 
-  const getFileContent = async () => {
-    if (file) {
+  useEffect(() => {
+    if (file && list.length > 0) {
       const fileObject = getDoc(file)
       if (fileObject) {
         const path = new URL(fileObject.path, window.location.origin)
@@ -21,17 +21,13 @@ const App = () => {
           .then(text => setMarkdown(text))
       }
       else {
-        // todo 没有内容
+        setMarkdown('未发现有效内容')
       }
     }
-  }
-
-  useEffect(() => {
-    getFileContent()
-  }, [list])
+  }, [file, list, getDoc])
 
   return (
-    <div className="w-[1200px] p-5 markdown-body">
+    <div className="w-[1200px] p-5 min-h-[600px] markdown-body">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
     </div>
   )
