@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url'
 
 import copy from 'esbuild-plugin-copy'
 import alias from 'esbuild-plugin-path-alias'
-import { marked } from 'marked'
 import dirJson from './plugins/dirJson.mjs'
 import stylePlugin from 'esbuild-style-plugin'
 import postcss from 'postcss'
@@ -47,25 +46,6 @@ const notifyEndPlugin = () => {
   }
 }
 
-// 创建一个简单的插件来处理 .md 文件
-const markdownPlugin = {
-  name: 'markdown',
-  setup(build) {
-    // 拦截以 .md 结尾的文件
-    build.onLoad({ filter: /\.md$/ }, async (args) => {
-      // 读取 .md 文件的内容
-      const markdownContent = await fs.promises.readFile(args.path, 'utf8')
-      // 将 Markdown 转换为 HTML
-      const htmlContent = marked(markdownContent)
-      // 返回一个带有 HTML 的模块
-      return {
-        contents: `export default ${JSON.stringify(htmlContent)};`,
-        loader: 'js',
-      }
-    })
-  },
-}
-
 const ctx = await esbuild.context({
   entryPoints: ['./src/main'],
   bundle: true,
@@ -97,13 +77,11 @@ const ctx = await esbuild.context({
       ],
     }),
     notifyEndPlugin(),
-    markdownPlugin,
     dirJson('./src/md/', './dist/file-data.json'),
     stylePlugin({
       // 配置 PostCSS 插件
       postcss: postcssProcessor,
     }),
-    // postcssModule,
   ],
 })
 

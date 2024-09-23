@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useDocFile from './useDocFile'
 
@@ -33,17 +33,21 @@ const DocList: React.FC = () => {
       </ul>
       <ul className="p-5 flex flex-col bg-white min-h-[500px]">
         {list.filter((item) => { return item.category == tab }).map((item, index) => (
-          <li key={index} onClick={() => navigate(`/blog/content/${item.name}`)} className="flex border-b-2 flex-row justify-between p-2 cursor-pointer">
+          <li
+            key={index}
+            onClick={() => navigate(`/blog/content/${item.name}`)}
+            className="flex border-b-2 flex-row justify-between p-2 cursor-pointer"
+          >
             <div className="flex-col">
-              <div className="text-2xl text-black font-bold">
-                {item.name}
+              <div className="text-2xl text-black">
+                {item.title || item.name}
               </div>
               <div>
                 Size:
                 {item.size}
               </div>
             </div>
-            <div className="flex flex-col text-right">
+            <div className="flex flex-col text-right min-w-72 justify-end">
               <div>
                 Create:
                 {item.createdAt}

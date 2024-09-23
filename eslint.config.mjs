@@ -2,15 +2,19 @@ import globals from 'globals'
 import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
+import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import jsonPlugin from 'eslint-plugin-json'
 
 export default tseslint.config(
   { ignores: ['dist', '**/node_modules'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      reactPlugin.configs.flat.recommended,
+    ],
+    files: ['**/*.{js,mjs,ts,tsx}'],
     languageOptions: {
       globals: globals.browser,
       parserOptions: {

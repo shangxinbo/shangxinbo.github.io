@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fromMarkdown } from 'mdast-util-from-markdown'
 
 const mdDirtoJson = (directory, outputFile) => ({
   name: 'generate-markdown-files-json',
@@ -20,15 +21,31 @@ const mdDirtoJson = (directory, outputFile) => ({
             // 使用 path.parse() 获取不带后缀的文件名
             const parsedPath = path.parse(filePath)
             const distPath = filePath.replace('src\\', '')
-
             const distPathArr = distPath.split('\\')
+
             let className = 'Uncategorized'
             if (distPathArr.length > 2) {
               className = distPathArr[1]
             }
+
+            // 解析文件名
+            let docTitle = ''
+            const doc = fs.readFileSync(filePath)
+            const tree = fromMarkdown(doc)
+            tree.children.map((item) => {
+              if (
+                item.type === 'heading'
+                && item.depth === 1
+                && item.position.start.line < 3
+              ) {
+                docTitle = item.children[0].value
+              }
+            })
+
             // 收集文件的基本信息
             fileList.push({
-              name: parsedPath.name, // 不带后缀的文件名
+              name: parsedPath.name,
+              title: docTitle,
               path: distPath, // 文件的完整路径
               size: stat.size, // 文件大小（字节）
               createdAt: stat.birthtime, // 创建时间

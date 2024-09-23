@@ -1,5 +1,6 @@
 export interface DocItem {
   name: string
+  title: string
   path: string
   size: number
   createdAt: string
