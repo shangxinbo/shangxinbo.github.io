@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useDocFile from './useDocFile'
+import dayjs from 'dayjs'
 
 const DocList: React.FC = () => {
   const [tab, setTab] = useState<string>()
@@ -39,7 +40,7 @@ const DocList: React.FC = () => {
             className="flex border-b-2 flex-row justify-between p-2 cursor-pointer"
           >
             <div className="flex-col">
-              <div className="text-2xl text-black">
+              <div className="text-2xl text-black py-2">
                 {item.title || item.name}
               </div>
               <div>
@@ -49,12 +50,12 @@ const DocList: React.FC = () => {
             </div>
             <div className="flex flex-col text-right min-w-72 justify-end">
               <div>
-                Create:
-                {item.createdAt}
+                Created:
+                {dayjs(item.createdAt).format('YYYY-MM-DD hh:mm:ss')}
               </div>
               <div>
-                Update:
-                {item.modifiedAt}
+                Updated:
+                {dayjs(item.modifiedAt).format('YYYY-MM-DD hh:mm:ss')}
               </div>
             </div>
           </li>
