@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import IndexApp from './pages/Index'
 import Content from './pages/Content'
-import ListPage from './pages/List'
+import Blog from './pages/Blog'
+import ListPage from './components/DocList'
 
 import {
   createBrowserRouter,
@@ -14,13 +15,20 @@ const router = createBrowserRouter([
     element: <IndexApp />,
   },
   {
-    path: '/content/:file',
-    element: <Content />,
+    path: 'blog',
+    element: <Blog />,
+    children: [
+      {
+        path: 'list',
+        element: <ListPage />,
+      },
+      {
+        path: 'content/:file',
+        element: <Content />,
+      },
+    ],
   },
-  {
-    path: 'list',
-    element: <ListPage />,
-  },
+
 ])
 
 document.addEventListener('DOMContentLoaded', () => {

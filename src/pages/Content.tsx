@@ -11,7 +11,7 @@ const App = () => {
   const [markdown, setMarkdown] = useState('')
 
   useEffect(() => {
-    fetch('/md/defineProperty.md')
+    fetch(`/md/${file}.md`)
       .then(res => res.text())
       .then(text => setMarkdown(text))
   }, [])

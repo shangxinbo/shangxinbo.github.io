@@ -1,11 +1,11 @@
 import '../assets/css/index.css'
 import StarSky from '../components/StarSky'
-import DocList from '../components/DocList'
+import { Outlet } from 'react-router-dom'
 
 const App: React.FC = () => {
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
-      <div className="h-48 w-full flex justify-center relative">
+    <div className="bg-gray-100 h-screen flex flex-col items-center">
+      <div className="h-48 w-full flex min-h-[200px] justify-center relative">
         <StarSky starNum={80}>
           <div className="w-[1200px] flex flex-col justify-center items-start text-white">
             <div className="text-2xl italic">Keep the life simple and hopefull</div>
@@ -18,7 +18,7 @@ const App: React.FC = () => {
           </div>
         </StarSky>
       </div>
-      <DocList></DocList>
+      <Outlet />
     </div>
   )
 }
