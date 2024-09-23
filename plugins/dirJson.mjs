@@ -22,7 +22,7 @@ const mdDirtoJson = (directory, outputFile) => ({
             const distPath = filePath.replace('src\\', '')
 
             const distPathArr = distPath.split('\\')
-            let className = 'Others'
+            let className = 'Uncategorized'
             if (distPathArr.length > 2) {
               className = distPathArr[1]
             }
@@ -46,7 +46,7 @@ const mdDirtoJson = (directory, outputFile) => ({
       const [fileList, classes] = getFiles(directory)
 
       const jsonFile = {
-        classes: [...new Set(classes)],
+        classes: [...new Set(classes)].sort((a, b) => { return a == 'Uncategorized' ? 1 : -1 }),
         file: fileList,
       }
 
