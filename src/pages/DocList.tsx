@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import type { DocItem } from '../interface'
+import useDocFile from './useDocFile'
 
 const DocList: React.FC = () => {
-  const [classes, setClasses] = useState<string[]>([])
-  const [list, setList] = useState<DocItem[]>([])
   const [tab, setTab] = useState<string>()
   const navigate = useNavigate()
-
-  const getDocs = async () => {
-    const res = await fetch('/file-data.json')
-    const json = await res.json()
-    setClasses(json.classes)
-    setTab(json.classes[0])
-    setList(json.file)
-  }
+  const { classes, list } = useDocFile()
 
   useEffect(() => {
-    getDocs()
-  }, [])
+    setTab(classes[0])
+  }, [classes])
 
   return (
-    <div className="w-[1200px] flex flex-col flex-1 overflow-hidden m-3">
+    <div className="w-[1200px] flex flex-col m-3">
       <ul className="flex flex-row border-b-2">
         {classes.map((item, index) => (
           <li
@@ -40,9 +31,9 @@ const DocList: React.FC = () => {
           </li>
         ))}
       </ul>
-      <ul className="p-5 flex flex-col overflow-auto bg-white min-h-full">
+      <ul className="p-5 flex flex-col bg-white min-h-[500px]">
         {list.filter((item) => { return item.category == tab }).map((item, index) => (
-          <li key={index} onClick={() => navigate(`/blog/content/${item.name}`)} className="flex border-b-2 flex-row justify-between p-2 cursor-pointer hover:bg-blue-300">
+          <li key={index} onClick={() => navigate(`/blog/content/${item.name}`)} className="flex border-b-2 flex-row justify-between p-2 cursor-pointer">
             <div className="flex-col">
               <div className="text-2xl text-black font-bold">
                 {item.name}

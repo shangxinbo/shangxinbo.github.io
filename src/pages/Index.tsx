@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../assets/css/index.css'
 import logo from '../assets/imgs/avt.jpg'
 import blogImg from '../assets/imgs/blog.png'
@@ -17,28 +18,28 @@ const IndexApp: React.FC = () => {
             Live in Beijing , China , and work
             at
             {' '}
-            <a target="_blank" className="text-blue-600 underline underline-offset-2" href="https://www.kuaishou.com/?isHome=1"> Kuaishou</a>
+            <Link target="_blank" className="text-blue-600 underline underline-offset-2" to="https://www.kuaishou.com/?isHome=1"> Kuaishou</Link>
             {' '}
             as
             a senior web front Engineer. Read
             more
             {' '}
-            <a className="text-blue-700 underline underline-offset-2" href="diary.html">about me</a>
+            <Link className="text-blue-700 underline underline-offset-2" to="/blog/list">about me</Link>
           </div>
         </div>
         <div className="flex justify-center gap-11 my-6">
-          <a className="w-10 h-10" href="diary.html" title="it's me">
+          <Link className="w-10 h-10" to="/blog/list" title="it's me">
             <img src={blogImg} />
-          </a>
-          <a className="w-10 h-10" href="https://github.com/shangxinbo" target="_blank" title="github">
+          </Link>
+          <Link className="w-10 h-10" to="https://github.com/shangxinbo" target="_blank" title="github">
             <img src={githubImg} />
-          </a>
-          <a className="w-10 h-10" href="#" title="google +">
+          </Link>
+          <Link className="w-10 h-10" to="#" title="google +">
             <img src={googleImg} />
-          </a>
-          <a className="w-10 h-10" href="tencent://message/?uin=314911714" title="qq">
+          </Link>
+          <Link className="w-10 h-10" to="tencent://message/?uin=314911714" title="qq">
             <img src={qqImg} />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

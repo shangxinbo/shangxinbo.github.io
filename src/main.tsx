@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import IndexApp from './pages/Index'
 import Content from './pages/Content'
 import Blog from './pages/Blog'
-import ListPage from './components/DocList'
+import ListPage from './pages/DocList'
 
 import {
   createBrowserRouter,
