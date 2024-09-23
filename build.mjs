@@ -78,6 +78,7 @@ const ctx = await esbuild.context({
     '.md': 'file',
     '.png': 'dataurl',
     '.jpg': 'dataurl',
+    '.webp': 'dataurl',
     '.svg': 'text',
     '.ttf': 'dataurl',
     '.eot': 'dataurl',
