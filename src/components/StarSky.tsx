@@ -1,10 +1,10 @@
-import { memo, useRef, useState, useEffect, ReactNode } from 'react'
+import { useRef, useState, useEffect, ReactNode } from 'react'
 import anime from 'animejs/lib/anime.es.js'
 import styles from '../assets/css/index.module.css'
 
 // starNum 星星数量
 // meteorNum 流星数量
-const StarSky = memo(function StarSky({ starNum = 120, meteorNum = 60, children }: { starNum?: number, meteorNum?: number, children?: ReactNode }) {
+const StarSky = ({ starNum = 120, meteorNum = 60, children }: { starNum?: number, meteorNum?: number, children?: ReactNode }) => {
   const ref = useRef<HTMLDivElement | null>(null)
   const [vw, setVw] = useState(0)
   const [vh, setVh] = useState(0)
@@ -87,6 +87,6 @@ const StarSky = memo(function StarSky({ starNum = 120, meteorNum = 60, children 
       </div>
     </div>
   )
-})
+}
 
 export default StarSky

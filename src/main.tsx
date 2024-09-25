@@ -4,6 +4,7 @@ import Content from './pages/Content'
 import Blog from './pages/Blog'
 import ListPage from './pages/DocList'
 import SearchPage from './pages/Search'
+import updateFavico from './hooks/useEmojiFavico'
 
 import {
   createBrowserRouter,
@@ -39,3 +40,4 @@ const router = createBrowserRouter([
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('body')!).render(<RouterProvider router={router} />)
 })
+updateFavico()
