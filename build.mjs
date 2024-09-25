@@ -50,6 +50,9 @@ const ctx = await esbuild.context({
   entryPoints: ['./src/main'],
   bundle: true,
   outdir: 'dist',
+  // https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+  // https://esbuild.github.io/content-types/#jsx
+  jsx: 'automatic',
   minify: true,
   sourcemap: 'linked',
   loader: {

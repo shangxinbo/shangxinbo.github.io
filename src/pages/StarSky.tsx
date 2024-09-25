@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, ReactNode } from 'react'
+import { useRef, useState, useEffect, ReactNode } from 'react'
 import anime from 'animejs/lib/anime.es.js'
 import styles from '../assets/css/index.module.css'
 

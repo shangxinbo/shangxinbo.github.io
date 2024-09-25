@@ -31,6 +31,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'react/react-in-jsx-scope': 0,
     },
   },
   // https://eslint.style/rules

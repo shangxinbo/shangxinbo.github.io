@@ -12,7 +12,7 @@ const IndexApp: React.FC = () => {
   const [showQr, setQr] = useState(false)
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="w-5/12 h-1/2 flex flex-col items-center justify-center">
+      <div className="w-[600px] h-1/2 flex flex-col items-center justify-center">
         <img src={logo} className="w-60 h-60 rounded-full" />
         <div className="flex flex-col italic items-center justify-center text-center">
           <div className="text-3xl font-bold my-3">Shang Xinbo</div>
@@ -22,7 +22,7 @@ const IndexApp: React.FC = () => {
             <Link target="_blank" className="text-blue-600 underline underline-offset-2" to="https://www.kuaishou.com/?isHome=1"> Kuaishou</Link>
             {' '}
             as a senior web front Engineer.
-            <br />
+            {' '}
             Read more
             {' '}
             <Link className="text-blue-700 underline underline-offset-2" to="/blog/list">about me</Link>
