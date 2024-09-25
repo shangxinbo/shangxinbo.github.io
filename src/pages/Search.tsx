@@ -17,7 +17,11 @@ const DocList: React.FC = () => {
 
   const filterList = list.filter((item) => {
     if (keywords) {
-      if (item.title.indexOf(keywords) >= 0 || item.name.indexOf(keywords) >= 0) {
+      const title = item.title.toLowerCase()
+      const name = item.name.toLowerCase()
+      const k = keywords.toLowerCase()
+
+      if (title.indexOf(k) >= 0 || name.indexOf(k) >= 0) {
         return true
       }
       else {

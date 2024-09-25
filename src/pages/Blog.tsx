@@ -11,7 +11,7 @@ const BlogLayout = () => {
   let keywords = ''
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  const toSearch = () => navigate(`/blog/search?keywords=${keywords}`)
+  const toSearch = () => navigate(`/blog/search?keywords=${encodeURIComponent(keywords)}`)
 
   const searchEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key == 'Enter') {
