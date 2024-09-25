@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useDocFile from '../hooks/useDocFile'
 import dayjs from 'dayjs'
+import useDocFile from '../hooks/useDocFile'
 import type { DocItem } from '../interface/index'
+import SortIcon from '../components/SortIcon'
+import Loading from '../components/Loading'
+import Blank from '../components/Blank'
 
 const DocList: React.FC = () => {
-  const [tab, setTab] = useState<string>()
   const navigate = useNavigate()
-  const { classes, list } = useDocFile()
+  const [tab, setTab] = useState<string>()
+  const { classes, list, loadStatus } = useDocFile()
   const [sort, setSort] = useState<string>('')
-
-  useEffect(() => {
-    setTab(classes[0])
-  }, [classes])
 
   const sortBy = (type: string) => {
     if (sort !== type) {
@@ -37,6 +36,25 @@ const DocList: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    setTab(classes[0])
+  }, [classes])
+
+  if (!loadStatus) {
+    return (
+      <div className="w-[1200px] flex flex-col m-3 h-96">
+        <Loading />
+      </div>
+    )
+  }
+  if (classes.length <= 0) {
+    return (
+      <div className="w-[1200px] flex flex-col m-3 h-96">
+        <Blank />
+      </div>
+    )
+  }
+
   return (
     <div className="w-[1200px] flex flex-col m-3">
       <ul className="flex flex-row border-b-2">
@@ -44,13 +62,13 @@ const DocList: React.FC = () => {
           <li
             key={index}
             className={`
-              px-[20px] 
-              py-[10px]
-              flex
-              justify-center
-              items-center
-              ${tab == item ? 'border-b-2 border-b-blue-700 border-solid' : 'cursor-pointer'}
-            `}
+                px-[20px] 
+                py-[10px]
+                flex
+                justify-center
+                items-center
+                ${tab == item ? 'border-b-2 border-b-blue-700 border-solid' : 'cursor-pointer'}
+              `}
             onClick={() => setTab(item)}
           >
             {item}
@@ -62,23 +80,26 @@ const DocList: React.FC = () => {
           <thead>
             <tr className="h-11 text-left">
               <th>Name</th>
-              <th className={`w-[120px] text-center cursor-pointer ${sort === 'size' ? 'text-violet-500' : ''}`} onClick={() => sortBy('size')}>
+              <th
+                className={`w-[120px] text-center cursor-pointer ${sort === 'size' ? 'text-violet-500' : ''}`}
+                onClick={() => sortBy('size')}
+              >
                 Size(KB)
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="px-1 inline size-7">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
-                </svg>
+                <SortIcon />
               </th>
-              <th className={`w-[120px] text-center cursor-pointer ${sort === 'create' ? 'text-violet-500' : ''}`} onClick={() => sortBy('create')}>
+              <th
+                className={`w-[120px] text-center cursor-pointer ${sort === 'create' ? 'text-violet-500' : ''}`}
+                onClick={() => sortBy('create')}
+              >
                 Created
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="px-1 inline size-7">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
-                </svg>
+                <SortIcon />
               </th>
-              <th className={`w-[120px] text-center cursor-pointer ${sort === 'update' ? 'text-violet-500' : ''}`} onClick={() => sortBy('update')}>
+              <th
+                className={`w-[120px] text-center cursor-pointer ${sort === 'update' ? 'text-violet-500' : ''}`}
+                onClick={() => sortBy('update')}
+              >
                 Updated
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="px-1 inline size-7">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
-                </svg>
+                <SortIcon />
               </th>
             </tr>
           </thead>
@@ -110,4 +131,5 @@ const DocList: React.FC = () => {
     </div>
   )
 }
+
 export default DocList

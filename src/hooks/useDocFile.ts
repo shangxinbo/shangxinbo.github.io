@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { DocItem } from '../interface'
 
 const useDocFile = () => {
+  const [loadStatus, setLoadStatus] = useState(false)
   const [classes, setClasses] = useState<string[]>([])
   const [list, setList] = useState<DocItem[]>([])
 
@@ -10,6 +11,7 @@ const useDocFile = () => {
     const json = await res.json()
     setClasses(json.classes)
     setList(json.file)
+    setLoadStatus(true)
   }
 
   const getDoc = (file: string) => {
@@ -22,7 +24,7 @@ const useDocFile = () => {
     getDocs()
   }, [])
 
-  return { classes, list, getDoc }
+  return { classes, list, loadStatus, getDoc }
 }
 
 export default useDocFile

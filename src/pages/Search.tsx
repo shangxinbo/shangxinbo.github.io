@@ -4,16 +4,31 @@ import useDocFile from '../hooks/useDocFile'
 import dayjs from 'dayjs'
 import type { DocItem } from '../interface/index'
 import Loading from '../components/Loading'
+import Blank from '../components/Blank'
 
 const DocList: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
-  const { list } = useDocFile()
+
+  const keywords = queryParams.get('keywords')
+  const { list, loadStatus } = useDocFile()
   const [sort, setSort] = useState<string>('')
 
-  console.log(queryParams.get('keywords'))
-  const keywords = queryParams.get('keywords')
+  const filterList = list.filter((item) => {
+    if (keywords) {
+      if (item.title.indexOf(keywords) >= 0 || item.name.indexOf(keywords) >= 0) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+    else {
+      return true
+    }
+  })
+
   const sortBy = (type: string) => {
     if (sort !== type) {
       setSort(type)
@@ -37,9 +52,23 @@ const DocList: React.FC = () => {
     }
   }
 
+  if (!loadStatus) {
+    return (
+      <div className="w-[1200px] flex flex-col m-3 h-96">
+        <Loading />
+      </div>
+    )
+  }
+  if (filterList.length <= 0) {
+    return (
+      <div className="w-[1200px] flex flex-col m-3 h-96">
+        <Blank />
+      </div>
+    )
+  }
+
   return (
     <div className="w-[1200px] flex flex-col m-3">
-      <Loading />
       <div className="px-5 flex flex-col bg-white">
         <table className="table-fixed ">
           <thead>
@@ -67,20 +96,7 @@ const DocList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {list
-              .filter((item) => {
-                if (keywords) {
-                  if (item.title.indexOf(keywords) >= 0 || item.name.indexOf(keywords) >= 0) {
-                    return true
-                  }
-                  else {
-                    return false
-                  }
-                }
-                else {
-                  return true
-                }
-              })
+            {filterList
               .sort(compareFunc)
               .map((item, index) => (
                 <tr
