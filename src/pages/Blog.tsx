@@ -1,20 +1,73 @@
+import { useEffect, useRef } from 'react'
 import '../assets/css/index.css'
 import StarSky from './StarSky'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 
-const App: React.FC = () => {
+const App = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  let keywords = ''
+  const search = () => {
+    console.log(keywords)
+    navigate(`/blog/search?keywords=${keywords}`)
+  }
+  const searchEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key == 'Enter') {
+      search()
+    }
+  }
+
+  const setValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    keywords = evt.target.value
+  }
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.value = queryParams.get('keywords') || ''
+    }
+  })
+
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center">
       <div className="h-48 w-full flex min-h-[200px] justify-center relative">
         <StarSky starNum={80}>
           <div className="w-[1200px] flex flex-col justify-center items-start text-white">
-            <div className="text-2xl italic">Keep the life simple and hopefull</div>
-            <ul className="flex justify-start gap-11 mr-3 my-2 text-xl italic">
-              <li className="underline"><Link to="/">index</Link></li>
-              <li className="underline"><Link to="/blog/list/">blog</Link></li>
-              <li className="underline"><Link to="https://github.com/shangxinbo">github</Link></li>
-              <li className="underline"><Link to="/">other</Link></li>
-            </ul>
+            <div className="text-3xl italic">Keep the life simple and hopefull</div>
+            <div className="w-full flex justify-between items-end my-3">
+              <ul className="flex justify-start gap-11 mr-3 text-xl">
+                <li className="underline underline-offset-2"><Link to="/">Home</Link></li>
+                <li className="underline underline-offset-2"><Link to="/blog/list/">DocList</Link></li>
+                <li className="underline underline-offset-2"><Link to="https://github.com/shangxinbo">Github</Link></li>
+                <li className="underline underline-offset-2"><Link to="/">About</Link></li>
+              </ul>
+              <div className="w-1/3 h-9 border border-white rounded-full flex items-center">
+                <input
+                  type="text"
+                  ref={inputRef}
+                  placeholder="Doc Title/Name"
+                  onKeyDown={searchEnter}
+                  onChange={setValue}
+                  className="
+                    w-96 h-9 block bg-transparent
+                    outline-none
+                    pl-4 pr-2
+                    placeholder:text-slate-300
+                "
+                />
+                <svg
+                  onClick={search}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="mr-3 cursor-pointer size-6"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </StarSky>
       </div>

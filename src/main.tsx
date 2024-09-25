@@ -4,6 +4,7 @@ import IndexApp from './pages/Index'
 import Content from './pages/Content'
 import Blog from './pages/Blog'
 import ListPage from './pages/DocList'
+import SearchPage from './pages/Search'
 
 import {
   createBrowserRouter,
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'content/:file',
         element: <Content />,
+      },
+      {
+        path: 'search',
+        element: <SearchPage />,
       },
     ],
   },

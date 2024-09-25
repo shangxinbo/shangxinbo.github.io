@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import useDocFile from './useDocFile'
 import dayjs from 'dayjs'
 import type { DocItem } from '../interface/index'
 
 const DocList: React.FC = () => {
-  const [tab, setTab] = useState<string>()
   const navigate = useNavigate()
-  const { classes, list } = useDocFile()
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  const { list } = useDocFile()
   const [sort, setSort] = useState<string>('')
 
-  useEffect(() => {
-    setTab(classes[0])
-  }, [classes])
-
+  console.log(queryParams.get('keywords'))
+  const keywords = queryParams.get('keywords')
   const sortBy = (type: string) => {
     if (sort !== type) {
       setSort(type)
@@ -39,29 +38,12 @@ const DocList: React.FC = () => {
 
   return (
     <div className="w-[1200px] flex flex-col m-3">
-      <ul className="flex flex-row border-b-2">
-        {classes.map((item, index) => (
-          <li
-            key={index}
-            className={`
-              px-[20px] 
-              py-[10px]
-              flex
-              justify-center
-              items-center
-              ${tab == item ? 'border-b-2 border-b-blue-700 border-solid' : 'cursor-pointer'}
-            `}
-            onClick={() => setTab(item)}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
       <div className="px-5 flex flex-col bg-white">
         <table className="table-fixed ">
           <thead>
             <tr className="h-11 text-left">
               <th>Name</th>
+              <th className="w-[120px] text-center">Category</th>
               <th className={`w-[120px] text-center cursor-pointer ${sort === 'size' ? 'text-violet-500' : ''}`} onClick={() => sortBy('size')}>
                 Size(KB)
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="px-1 inline size-7">
@@ -84,7 +66,19 @@ const DocList: React.FC = () => {
           </thead>
           <tbody>
             {list
-              .filter((item) => { return item.category == tab })
+              .filter((item) => {
+                if (keywords) {
+                  if (item.title.indexOf(keywords) >= 0 || item.name.indexOf(keywords) >= 0) {
+                    return true
+                  }
+                  else {
+                    return false
+                  }
+                }
+                else {
+                  return true
+                }
+              })
               .sort(compareFunc)
               .map((item, index) => (
                 <tr
@@ -93,6 +87,9 @@ const DocList: React.FC = () => {
                   className={`h-11 cursor-pointer border-y border-slate-300 ${index % 2 > 0 ? 'bg-zinc-50' : ''}`}
                 >
                   <td className="text-left text-sky-600 hover:underline">{item.title || item.name}</td>
+                  <td className="text-center">
+                    {item.category}
+                  </td>
                   <td className="text-center">
                     {item.size}
                   </td>
