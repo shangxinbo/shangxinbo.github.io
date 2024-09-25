@@ -9,7 +9,7 @@ const Blank = () => {
     direction: 'alternate',
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: 'easeInOutSine',
-    duration: 700,
+    duration: 1200,
   })
   useEffect(() => {
     animation()

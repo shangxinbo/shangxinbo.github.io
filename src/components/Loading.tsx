@@ -9,7 +9,7 @@ const Loading = () => {
     direction: 'alternate',
     strokeDashoffset: [anime.setDashoffset, 0],
     easing: 'easeInOutSine',
-    duration: 700,
+    duration: 1000,
   })
 
   useEffect(() => {
