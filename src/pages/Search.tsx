@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import useDocFile from './useDocFile'
+import useDocFile from '../hooks/useDocFile'
 import dayjs from 'dayjs'
 import type { DocItem } from '../interface/index'
+import Loading from '../components/Loading'
 
 const DocList: React.FC = () => {
   const navigate = useNavigate()
@@ -38,6 +39,7 @@ const DocList: React.FC = () => {
 
   return (
     <div className="w-[1200px] flex flex-col m-3">
+      <Loading />
       <div className="px-5 flex flex-col bg-white">
         <table className="table-fixed ">
           <thead>

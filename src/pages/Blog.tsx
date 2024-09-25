@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import '../assets/css/index.css'
-import StarSky from './StarSky'
+import StarSky from '../components/StarSky'
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 
 const App = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useDocFile from './useDocFile'
+import useDocFile from '../hooks/useDocFile'
 import dayjs from 'dayjs'
 import type { DocItem } from '../interface/index'
 
