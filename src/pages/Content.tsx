@@ -28,9 +28,9 @@ const App = () => {
   }, [file, list, getDoc])
 
   return (
-    <div className="w-[1200px] p-5 min-h-[600px] markdown-body">
+    <div className="w-[1200px] p-5 min-h-[600px] bg-white">
       <ReactMarkdown
-        className={styles['markdown-html']}
+        className={`${styles['markdown-html']} markdown-body`}
         rehypePlugins={[rehypeHighlight]}
         remarkPlugins={[remarkGfm]}
       >
