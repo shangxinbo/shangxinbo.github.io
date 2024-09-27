@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import dayjs from 'dayjs'
-import useDocFile from '../hooks/useDocFile'
-import type { DocItem } from '../interface/index'
-import SortIcon from '../components/SortIcon'
-import Loading from '../components/Loading'
-import Blank from '../components/Blank'
+import useDocFile from '~/hooks/useDocFile'
+import type { DocItem } from '~/interface/index'
+import SortIcon from '~/components/SortIcon'
+import Loading from '~/components/Loading'
+import Blank from '~/components/Blank'
 
 const DocList: React.FC = () => {
   const navigate = useNavigate()

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import useDocFile from '../hooks/useDocFile'
+import useDocFile from '~/hooks/useDocFile'
 import dayjs from 'dayjs'
-import type { DocItem } from '../interface/index'
-import Loading from '../components/Loading'
-import Blank from '../components/Blank'
+import type { DocItem } from '~/interface/index'
+import Loading from '~/components/Loading'
+import Blank from '~/components/Blank'
 
 const DocList: React.FC = () => {
   const navigate = useNavigate()

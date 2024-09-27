@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 import '../assets/css/index.css'
-import StarSky from '../components/StarSky'
+import StarSky from '~/components/StarSky'
 
 const BlogLayout = () => {
   const navigate = useNavigate()

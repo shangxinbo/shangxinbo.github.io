@@ -58,6 +58,7 @@ const ctx = await esbuild.context({
     '.js': 'jsx',
     '.ts': 'tsx',
     '.md': 'file',
+    '.css': 'css',
     '.png': 'dataurl',
     '.jpg': 'dataurl',
     '.webp': 'dataurl',

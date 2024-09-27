@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../assets/css/index.css'
-import logo from '../assets/imgs/avt.jpg'
-import blogImg from '../assets/imgs/wordpress-logo.webp'
-import githubImg from '../assets/imgs/github-logo.webp'
-import emailImg from '../assets/imgs/email.webp'
-import wxImg from '../assets/imgs/wechat.webp'
-import wxqrImg from '../assets/imgs/wx.jpg'
+import logo from '~/assets/imgs/avt.jpg'
+import blogImg from '~/assets/imgs/wordpress-logo.webp'
+import githubImg from '~/assets/imgs/github-logo.webp'
+import emailImg from '~/assets/imgs/email.webp'
+import wxImg from '~/assets/imgs/wechat.webp'
+import wxqrImg from '~/assets/imgs/wx.jpg'
 
 const IndexApp: React.FC = () => {
   const [showQr, setQr] = useState(false)

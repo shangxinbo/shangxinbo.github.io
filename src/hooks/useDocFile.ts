@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { DocItem } from '../interface'
+import type { DocItem } from '~/interface'
 
 const useDocFile = () => {
   const [loadStatus, setLoadStatus] = useState(false)

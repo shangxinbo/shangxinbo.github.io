@@ -6,6 +6,11 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
