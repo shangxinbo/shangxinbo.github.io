@@ -43,7 +43,10 @@ const BlogLayout = () => {
                   <Link to="https://github.com/shangxinbo">Github</Link>
                 </li>
                 <li className="underline underline-offset-2">
-                  <Link to="/">About</Link>
+                  <Link to="/blog/content/why">About</Link>
+                </li>
+                <li className="underline underline-offset-2">
+                  <Link to="/blog/content/me">Me</Link>
                 </li>
               </ul>
               <div className="w-1/3 h-9 border border-white rounded-full flex items-center">
