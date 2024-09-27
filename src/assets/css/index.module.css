@@ -18,3 +18,8 @@
   background: linear-gradient(to right, white, transparent);
   filter: drop-shadow(0 0 6px white);
 }
+
+/* 因为tailwind 会把li 的样式抹平，但markdown里的列表会用到这个样式 */
+.markdown-html ul{
+  list-style-type:disc;
+}

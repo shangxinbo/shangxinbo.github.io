@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
 import useDocFile from '../hooks/useDocFile'
-
 import 'github-markdown-css'
+import styles from '../assets/css/index.module.css'
 
 const App = () => {
   const [markdown, setMarkdown] = useState('')
@@ -28,7 +29,13 @@ const App = () => {
 
   return (
     <div className="w-[1200px] p-5 min-h-[600px] markdown-body">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+      <ReactMarkdown
+        className={styles['markdown-html']}
+        rehypePlugins={[rehypeHighlight]}
+        remarkPlugins={[remarkGfm]}
+      >
+        {markdown}
+      </ReactMarkdown>
     </div>
   )
 }
