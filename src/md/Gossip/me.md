@@ -1,26 +1,28 @@
 ## 尚新波
 
-![](https://img.shields.io/badge/javascript-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/HTML5-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/CSS3-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/ES6-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Vue-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/React-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Webpack-荣耀黄金-yellow.svg?style=flat-square)  ![](https://img.shields.io/badge/jQuery-至尊星耀-blue.svg?style=flat-square) ![](https://img.shields.io/badge/FIS-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/Sea.js&Require.js-永恒钻石-green.svg?style=flat-square) ![](https://img.shields.io/badge/Echarts-尊贵铂金-orange.svg?style=flat-square) ![](https://img.shields.io/badge/D3.js-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/ReactNative-秩序白银-lightgrey.svg?style=flat-square) ![](https://img.shields.io/badge/Cordova-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/PHP-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/node-尊贵铂金-orange.svg?style=flat-square) ![](https://img.shields.io/badge/Axios-荣耀黄金-yellow.svg?style=flat-square) ![](https://img.shields.io/badge/bash&linux-秩序白银-lightgrey.svg?style=flat-square) 
+男  1988.7.1  
 
-男   29岁  
-
-河北农业大学  本科  计算机科学与技术专业
+河北农业大学 本科 计算机科学与技术专业 2012年毕业
 
 户籍：河北廊坊霸州
 
 常用邮箱：314911714@qq.com
 
-常用电话：186****498
+常用电话：1861211498
 
-工作年限：5年
+工作年限：12年
 
-求职岗位：高级前端开发工程师
-
-[我的主页](https://shangxinbo.github.io)     [github](https://github.com/shangxinbo) 
+我的主页 https://shangxinbo.github.io
+GitHub https://github.com/shangxinbo 
 
 
 
 ### 工作经历与技能成长
+  
+* 2020.5~2022.12.31 快手 用户增长部
+
+  主要负责用户留存的金币激励项目和拉新拉活的站外分享承接页，以及分享中台的前端工作
+
 
 <img src="http://www.lgstatic.com/image1/M00/00/30/CgYXBlTUXIGAMxgbAACkkMifcvg894.JPG" style="height:40px;" />  [北京海迈德科技咨询有限公司](http://www.high-med.com)  
 
@@ -99,7 +101,6 @@ vue生态，单文件组件的形式，彻底解决前后端分离所遇到的�
 __代表作：__ [京东蓝鲸征信](https://icredit.jd.com)
 
 产品企业图谱是我的成果；协助完成企业舆情，企业画像，交易征信模块；辅助重构了蓝精灵、mini尽调模块；重写了自动填充搜索框组件，重写了page组件。
-
 
 
 ### 自我认知
