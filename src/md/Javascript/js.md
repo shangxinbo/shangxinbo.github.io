@@ -1,5 +1,4 @@
 # js 
-*2017-07-23*
 
 1. javascript在Netscape Navigator2上开始使用，开始叫LiveScript,发布前为了搭Java的顺风车，改名JavaScript.随后在Netscape Navigator3上发布Javascript1.1,之后IE3加入JScript，实质是另一个JavaScript的实现，为了避开Netscape授权问题所以叫JScript。1997年Netscape以JavaScript1.1为蓝本提交给ECMA进行标准化。
 

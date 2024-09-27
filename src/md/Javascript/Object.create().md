@@ -1,7 +1,5 @@
 # Object.create()
 
-*2017-09-01*
-
 Object.create(proto [, propertiesObject])
 
 * proto:(object) 要继承的原型

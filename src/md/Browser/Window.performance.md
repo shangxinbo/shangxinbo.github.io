@@ -1,7 +1,5 @@
 # Window.performance
 
-*2017-09-04*
-
 Performance API 是几个api的组合，用于精确度量网页在浏览器中的性能表现。
 
 ### PerformanceTiming API

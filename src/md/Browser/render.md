@@ -1,34 +1,21 @@
-# 浏览器工作原理解读
+# 浏览器渲染引擎
 
-*2017-04-27*
+本文标题是浏览器工作原理，但实质上是在讲解__浏览器渲染的流程__，主要讲浏览器呈现引擎的工作流程。而呈现引擎默认可显示HTML和XML文档与图片，还可以显示其他内容比如PDF等，我们这里也只讲主要用途：显示使用CSS格式化的HTML内容和图片
 
-本分根据以色列大神"塔利-加希尔"的文章[《浏览器的工作原理》](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)而来,剥离一些内容具体总结对于前端实际工作中所要用到的知识。本片标题是浏览器工作原理，但实质上是在讲解__浏览器渲染的流程__，主要讲浏览器呈现引擎的工作流程。而呈现引擎默认可显示HTML和XML文档与图片，还可以显示其他内容比如PDF等，我们这里也只讲主要用途：显示使用CSS格式化的HTML内容和图片
+本分主要探讨Safari和Chrome的渲染引擎 Webkit和Blink，其实Blink也是在Webkit的一个分支上做的
 
-> 文章探究Firefox 和Chrome，其他不做讨论
+Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。
 
-值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。
-
-webkit主流程
-
-![webkit](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/webkitflow.png)
-
-Gecko主流程
-
-![Gecko](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/image008.jpg)
-
-
-
-### HTML解析(HTML parse)
+### HTML解析(HTML parse)形成DOM树
 
 解析文档是指将文档转化成为有意义的结构，也就是可让代码理解和使用的结构。
 
 一般的解析器分为两类自上而下解析器和自下而上解析器。直观地来说，自上而下的解析器从语法的高层结构出发，尝试从中找到匹配的结构。而自下而上的解析器从低层规则出发，将输入内容逐步转化为语法规则，直至满足高层规则。
 
-然而很遗憾，所有的常规解析器都不适用于 HTML。HTML 并不能很容易地用解析器所需的与上下文无关的语法来定义。所以在HTML4时，需要借助SGML的DTD格式来解析。
+然而很遗憾，所有的常规解析器都不适用于 HTML。HTML 并不能很容易地用解析器所需的与上下文无关的语法来定义。所以在HTML4时，需要借助SGML的DTD格式来解析，在HTML5规范制定时，由于不能使用常规的解析技术，浏览器就创建了自定义的解析器来解析HTML。HTML5规范详细的描述了解析算法。这是为什么说HTML5不再是基于SGML的依据。
 
-文档解析完成后输出DOM Tree .Dom与标记之间几乎是一一对应关系。
+文档解析完成后输出DOM Tree .Dom与HTML之间几乎是一一对应关系。
 
-在HTML5规范制定时，由于不能使用常规的解析技术，浏览器就创建了自定义的解析器来解析HTML。HTML5规范详细的描述了解析算法。这是为什么说HTML5不再是基于SGML的依据。
 
 > 浏览器纠错
 >
@@ -65,3 +52,6 @@ WebKit 和 Firefox 都进行了这项优化。在执行脚本时，其他线程�
 ### 绘制(display)
 
 在绘制阶段，系统会遍历呈现树，并调用呈现器的“paint”方法，将呈现器的内容显示在屏幕上。绘制工作是使用用户界面基础组件完成的。分为全局绘制和增量绘制
+
+
+[浏览器的工作方式](https://web.dev/articles/howbrowserswork?hl=zh-cn)
