@@ -25,12 +25,12 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
 - 喜欢安静的 coding。
 
 ## 工作经历与技能成长
-### 2022.12.31 ~ 至今 北京吐司鸡商贸 创业
+### 2023.01.01 ~ 至今 自由职业
 
 期间持续从事技术类项目，列举 3 个说明，除以下项目还接手过微信小程序和 Electron 做的一些私人工具类项目，可以参见 GitHub 主页。
 
 1. 个人独立完成简要眼镜店管理
-    
+   
     线上地址 [https://tuzki.cc/](https://tuzki.cc/) 
     
     GitHub 项目：[https://github.com/shangxinbo/glass](https://github.com/shangxinbo/glass)
@@ -42,7 +42,7 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
    - 系统内存优化等运维工作。
 
 2. 基于 Cockpit 二次开发运维管理平台
-    
+   
     线上测试地址：[https://116.204.86.81:9854/](https://116.204.86.81:9854/)
 
     技术栈：Esbuild + React + PatternFly + Warewulf Shell 
@@ -51,13 +51,13 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
    - ESLint 9 的配置，Esbuild 的打包配置。
 
 3. AI 写作的平台 Dream Ink Flora
-    
+   
     技术栈：Vue3 Composition API + TypeScript + Element Plus + vue-router + Pinia，包括 SCSS 等。
    - 前端独立工程化，Vite 本地开发服务器，生产 Nginx 代理解决跨域。
    - 移动端和 PC 端两套视图调用核心公共化模块，响应式，移动端处理。
    - WebSocket 对接 AI 模型输出，API 调用使用 Fetch。
 
-  
+
 ### 2020.5 ~ 2022.12.31 快手 用户增长部
 
 1. 快手极速版赚钱页 主 Owner 项目
@@ -123,7 +123,7 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
 ### 2015.10 ~ 2017.11 集奥聚合科技有限公司 UED 高级前端
 
 1. 易获客数据营销平台
-    
+   
     私有云部署，之前的公有云地址 [ana.geotmt.com](http://ana.geotmt.com)。
     
     技术栈：ArtTemplate + jQuery + Sea.js + Vue 2 + Gulp + Webpack + Less
@@ -131,7 +131,7 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
    - 2017 年左右用 Vue 2 生态全家桶重构项目，Webpack 配置组件懒加载等优化工作。
 
 2. 数据可视化大屏项目
-    
+   
     技术栈：Echarts.js, D3.js + Express, MongoDB, Mock Server
    - 使用 Echarts.js 地图图标，D3 的树形图关系图表等。
    - 大屏开机自启动，编写 Shell 脚本自动化打开浏览器，编写浏览器插件实现自动打开页面。
@@ -140,7 +140,7 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
 ### 2012.06 ~ 2015.10 拉手网
 
 1. 负责拉手网主站和 WAP 站的前端页面制作。
-    
+   
     技术栈：ThinkPHP + FiSP + Bootstrap
    - 百度的 FiSP 是我最早接触前端组件化概念的框架。
    - 按照设计图保质保量完成前端页面。
