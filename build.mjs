@@ -99,5 +99,4 @@ if (args.indexOf('--watch') >= 0) {
 }
 else {
   await ctx.rebuild()
-  process.exit(1)
 }
