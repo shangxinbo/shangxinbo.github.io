@@ -76,6 +76,7 @@ const ctx = await esbuild.context({
     copy({
       assets: [
         { from: ['./index.html'], to: ['./index.html'] },
+        { from: ['./index.html'], to: ['./404.html'] },
         { from: ['./src/md/**/*'], to: ['./md'] },
       ],
     }),
