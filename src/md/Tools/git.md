@@ -69,13 +69,12 @@ git checkout abc123 -- file.txt
 git reset  可以更改当前分支的提交历史，它有三种主要模式：--soft、--mixed 和 --hard。
 
 --soft：只重置 HEAD 到指定的提交，暂存区和工作目录保持不变。
+一般用于想合并一些最新提交的时候
 ```
 git reset --soft <commit>
 ```
-
---mixed（默认）：重置 HEAD 到指定的提交，暂存区重置，但工作目录保持不变。
-
-git reset --mixed <commit>
 --hard：重置 HEAD 到指定的提交，暂存区和工作目录都重置。
-
+一般用于完全放弃式的回退，不建议使用，可以使用soft模式然后git stash来实现
+```
 git reset --hard <commit>
+```
