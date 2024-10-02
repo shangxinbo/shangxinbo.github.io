@@ -63,3 +63,19 @@ git checkout 切换分支或恢复文件到指定提交。
 git checkout abc123 -- file.txt
 ```
 分离头指针状态是指当前的HEAD指针不指向任何分支的最新提交，而是指向某个特定的提交
+
+
+
+git reset  可以更改当前分支的提交历史，它有三种主要模式：--soft、--mixed 和 --hard。
+
+--soft：只重置 HEAD 到指定的提交，暂存区和工作目录保持不变。
+```
+git reset --soft <commit>
+```
+
+--mixed（默认）：重置 HEAD 到指定的提交，暂存区重置，但工作目录保持不变。
+
+git reset --mixed <commit>
+--hard：重置 HEAD 到指定的提交，暂存区和工作目录都重置。
+
+git reset --hard <commit>
