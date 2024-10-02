@@ -73,7 +73,7 @@ const mdDirtoJson = (directory, outputFile) => ({
       // 将 JSON 数据写入到指定文件
       fs.writeFileSync(outputFile, jsonData)
 
-      console.log(`JSON 数据已生成: ${outputFile}`)
+      // console.log(`JSON 数据已生成: ${outputFile}`)
     })
   },
 })
