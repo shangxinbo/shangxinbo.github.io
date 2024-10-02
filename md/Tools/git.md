@@ -63,3 +63,39 @@ git checkout 切换分支或恢复文件到指定提交。
 git checkout abc123 -- file.txt
 ```
 分离头指针状态是指当前的HEAD指针不指向任何分支的最新提交，而是指向某个特定的提交
+
+
+
+git reset  可以更改当前分支的提交历史，它有三种主要模式：--soft、--mixed 和 --hard。
+
+--soft：只重置 HEAD 到指定的提交，暂存区和工作目录保持不变。
+一般用于想合并一些最新提交的时候
+```
+git reset --soft <commit>
+```
+--hard：重置 HEAD 到指定的提交，暂存区和工作目录都重置。
+一般用于完全放弃式的回退，不建议使用，可以使用soft模式然后git stash来实现
+```
+git reset --hard <commit>
+```
+
+git revert 撤销某次提交，但不会改变提交历史，只是将文件内容回退到那次提交撤销后的状态，然后创建新的提交来进行修改
+一般用于回滚后有做修改的内容
+
+Git Flow 主要由以下几类分支组成：master、develop、feature、release、hotfix。这个不多说了
+
+Git Rebase：命令用于将一个分支上的更改移到另一个分支之上。它可以帮助保持提交历史的线性，减少合并时的冲突。
+
+交互式变基：
+git rebase -i <commit>
+
+交互式变基允许你在变基过程中编辑、删除或合并提交。常用选项包括：
+
+pick：保留提交
+reword：修改提交信息
+edit：编辑提交
+squash：将当前提交与前一个提交合并
+fixup：将当前提交与前一个提交合并，不保留提交信息
+drop：删除提交
+
+git remote add [shortname] [url]
