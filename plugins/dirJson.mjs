@@ -20,8 +20,8 @@ const mdDirtoJson = (directory, outputFile) => ({
           else {
             // 使用 path.parse() 获取不带后缀的文件名
             const parsedPath = path.parse(filePath)
-            const distPath = filePath.replace('src\\', '')
-            const distPathArr = distPath.split('\\')
+            const distPath = filePath.replace('src' + path.sep, '')
+            const distPathArr = distPath.split(path.sep)
 
             let className = 'Uncategorized'
             if (distPathArr.length > 2) {
@@ -63,7 +63,7 @@ const mdDirtoJson = (directory, outputFile) => ({
       const [fileList, classes] = getFiles(directory)
 
       const jsonFile = {
-        classes: [...new Set(classes)].sort((a, b) => { return a == 'Uncategorized' ? 1 : -1 }),
+        classes: [...new Set(classes)].sort((a) => { return a == 'Uncategorized' ? 1 : -1 }),
         file: fileList,
       }
 
