@@ -14,69 +14,67 @@ Oboject.defineProperty(obj,prop,descriptor)
 
 * 公共描述符
 
-  configurable 当且仅当该值为true时，该属性描述符才能被改变(write 属性除外，但如果configurable设置为false时，write只能从true变成false,不能由false变成true)，同时该属性才能被删除,默认是false
+configurable 当且仅当该值为true时，该属性描述符才能被改变(write 属性除外，但如果configurable设置为false时，write只能从true变成false,不能由false变成true)，同时该属性才能被删除,默认是false
 
-  enumerable 当且仅当该值为true时，该值才能出现在对象的枚举属性中。默认时false
-
-   ```Javascript
-  let obj = Object.create(null)
-  Object.defineProperty(obj,'name',{
-  	get:function(){
-    	return 'aa'
-    }
-  })
-  Object.defineProperty(obj,'name',{
-    set:function(value){
-    	this.name = value
-    }
-  })
-  // 因为configurable 默认是false,第一次定义的属性不能再此修改属性的描述符
-  // Uncaught TypeError: Cannot redefine property: name
-   ```
+enumerable 当且仅当该值为true时，该值才能出现在对象的枚举属性中。默认时false
 
   ```Javascript
-  let obj = {
-  	id:1,
-    name:'smallhead'
+let obj = Object.create(null)
+Object.defineProperty(obj,'name',{
+  get:function(){
+    return 'aa'
   }
-  delete obj.name  //可以删除
-  Object.defineProperty(obj,'name',{
-  	get:function(){
-    	return 'aa'
-    }
-  })
-  delete obj.name  //不可以删除，但不报错，严格模式下会报错
-  ```
-
-  ```Javascript
-  let obj = {
-  	id:1
+})
+Object.defineProperty(obj,'name',{
+  set:function(value){
+    this.name = value
   }
-  Object.defineProperty(obj,'name',{
-  	enumerable:true
-  })
-  console.log(obj) //{id:1,name:undefined}
+})
+// 因为configurable 默认是false,第一次定义的属性不能再此修改属性的描述符
+// Uncaught TypeError: Cannot redefine property: name
   ```
 
-  ```Javascript
-  let obj = Object.create(null)
-  Object.defineProperty(obj,'name',{
-  	configurable:false,
-   	writable:true,
-    enumerable:true
-  })
-  // 报错 Uncaught TypeError: Cannot redefine property: name
-  Object.defineProperty(obj,'name',{
-   	enumerable:true
-  })
-  // 可以执行
-  Object.defineProperty(obj,'name',{
-   	writable:false
-  })
-  console.log(obj)
-  ```
+```Javascript
+let obj = {
+  id:1,
+  name:'smallhead'
+}
+delete obj.name  //可以删除
+Object.defineProperty(obj,'name',{
+  get:function(){
+    return 'aa'
+  }
+})
+delete obj.name  //不可以删除，但不报错，严格模式下会报错
+```
 
-  ​
+```Javascript
+let obj = {
+  id:1
+}
+Object.defineProperty(obj,'name',{
+  enumerable:true
+})
+console.log(obj) //{id:1,name:undefined}
+```
+
+```Javascript
+let obj = Object.create(null)
+Object.defineProperty(obj,'name',{
+  configurable:false,
+  writable:true,
+  enumerable:true
+})
+// 报错 Uncaught TypeError: Cannot redefine property: name
+Object.defineProperty(obj,'name',{
+  enumerable:true
+})
+// 可以执行
+Object.defineProperty(obj,'name',{
+  writable:false
+})
+console.log(obj)
+```
 
 * 数据描述符
 
@@ -100,8 +98,6 @@ Oboject.defineProperty(obj,prop,descriptor)
   get 一个给属性提供getter的方法，getter的返回值用作属性值，若没有getter则为undefined
 
   set  一个给属性提供setter的方法，该方法接受唯一参数是要设置的新值，若没有setter则为undefined
-
-
 
 NOTE :数据描述符合存取描述符不能同时出现
 
@@ -172,8 +168,6 @@ arc.temperature = 13;
 arc.getArchive(); // [{ val: 11 }, { val: 13 }]
 ```
 
-
-
 和Object.defineProperty()类似的还有一个Object.defineProperties(),功能类似，只是可以一次定义多个属性的描述
 
 Object.defineProperties(*obj*, *props*)
@@ -191,6 +185,4 @@ Object.defineProperties(obj, {
   }
 })
 ```
-
-
 

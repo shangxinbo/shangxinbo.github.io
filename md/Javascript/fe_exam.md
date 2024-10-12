@@ -2,13 +2,11 @@
 
 ## HTML
 
-1. 为什么HTML5 不需要DTD
-
-2. 页面导入样式时，使用link和@import的区别
+1. 页面导入样式时，使用link和@import的区别
 
    link会异步加载，不会影响浏览器对文档的处理。
 
-3. 浏览器内核的理解
+2. 浏览器内核的理解
 
    浏览器内核主要分为渲染引擎和js引擎
 
@@ -16,41 +14,41 @@
 
    常见的js引擎有spiderMonkey,V8,Chakra
 
-4. cookie vs sessionStorage vs localStorage
+3. cookie vs sessionStorage vs localStorage
 
    - cookie 最大4k，每次请求都会在同源request header中传递，有效期过期后失效否则一直存在
    - sessionStorage  可支持5M+，仅用在本地存储(同源)，仅在当前会话窗口有效，当用户新开窗口不会起作用
    - localStorage   可支持5M+，仅用在本地存储(同源)，除非主动删除否则一直有效
 
-5. 如何实现跨页传值
+4. 如何实现跨页传值
 
    - 使用URL query传参，形如 `/project/name?tag=1`
    - 使用本地存储方案cookie/storage 
 
-6. HTML5的离线存储怎么使用
+5. HTML5的离线存储怎么使用
 
    application/cache 已经不被支持,详情见[使用应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache)
 
-7. Page Visibility API
+6. Page Visibility API
 
    当一个网页可见或点击选中状态时Page Visibility API可以让你获取到这个状态，属性有`document.hidden/document.visibilityState`,监听事件`document.addEventListener('visibilitychange',callback)`
 
    详情见[MDN -> Page Visibility API](https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API)
 
-8. 网页验证码是做什么用的
+7. 网页验证码是做什么用的
 
    区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水； 有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试。
 
-9. HTML meta viewport
+8. HTML meta viewport
 
    手机浏览器是把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。移动版的 Safari 浏览器最新引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放，其他手机浏览器也基本支持。
 
-10. 什么叫渐进增强，优雅降级
+9. 什么叫渐进增强，优雅降级
 
   - 渐进增强 progressive enhancement：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
   - 优雅降级 graceful degradation：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
 
-11. 什么是XSS，如何防止XSS攻击
+10. 什么是XSS，如何防止XSS攻击
 
     XSS是一种前端代码注入的攻击，它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。一般这种攻击注入的是JavaScript代码，不过如果是动态网页的话被注入的代码也可以是Java等后端代码。攻击成功后攻击者可能得到更高的权限，如获取cookie，不用登录即可获取会话等。
 
@@ -65,21 +63,21 @@
     /     –>     &#x2f;
     ```
 
-12. CSRF攻击
+11. CSRF攻击
 
-13. Clickjacking攻击
+12. Clickjacking攻击
 
-14. link标签可以放到head之外的标签元素么
+13. link标签可以放到head之外的标签元素么
 
-15. HTML中元素分为那几种类型（HTML5,HTML4）HTML5的内容模型
+14. HTML中元素分为那几种类型（HTML5,HTML4）HTML5的内容模型
 
-16. [表单验证](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation)
+15. [表单验证](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms/Data_form_validation)
 
-17. indexedDB
+16. indexedDB
 
-18. requestAnimationFrame(https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5)
+17. requestAnimationFrame(https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5)
 
-19. 现代浏览器icon解决方案对比
+18. 现代浏览器icon解决方案对比
 
     * SVG
     * PNG
