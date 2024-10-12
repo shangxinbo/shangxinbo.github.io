@@ -160,9 +160,6 @@ Performance.memory 非标准属性，提供内存占用情况，不被建议使�
 * toJSON()
 
 
-
-
-
 https://www.w3.org/TR/navigation-timing/
 
 https://www.w3.org/TR/user-timing/#performancemark
