@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 import '../assets/css/index.css'
 import StarSky from '~/components/StarSky'
-import MenuIcon from '~/components/menuIcon'
+import MenuIcon from '~/components/MenuIcon'
 
 const BlogLayout = () => {
   const navigate = useNavigate()
