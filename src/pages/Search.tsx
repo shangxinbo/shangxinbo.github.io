@@ -58,21 +58,21 @@ const DocList: React.FC = () => {
 
   if (!loadStatus) {
     return (
-      <div className="w-[1200px] flex flex-col m-3 h-96">
+      <div className="w-full lg:w-[1200px] flex flex-col m-3 h-96">
         <Loading />
       </div>
     )
   }
   if (filterList.length <= 0) {
     return (
-      <div className="w-[1200px] flex flex-col m-3 h-96">
+      <div className="w-full lg:w-[1200px] flex flex-col m-3 h-96">
         <Blank />
       </div>
     )
   }
 
   return (
-    <div className="w-[1200px] flex flex-col m-3">
+    <div className="w-full lg:w-[1200px] flex flex-col m-3">
       <div className="px-5 flex flex-col bg-white">
         <table className="table-fixed ">
           <thead>

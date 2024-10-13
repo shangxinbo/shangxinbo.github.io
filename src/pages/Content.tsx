@@ -28,9 +28,10 @@ const App = () => {
   }, [file, list, getDoc])
 
   return (
-    <div className="w-[1200px] p-5 min-h-[600px] bg-white">
+    <div className="w-full lg:w-[1200px] p-5 min-h-[600px] bg-white">
       <ReactMarkdown
         className={`${styles['markdown-html']} markdown-body`}
+
         rehypePlugins={[rehypeHighlight]}
         remarkPlugins={[remarkGfm]}
       >

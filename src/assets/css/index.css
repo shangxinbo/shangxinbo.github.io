@@ -42,3 +42,9 @@ html,body{
   *::-webkit-scrollbar-corner {
     background-color: #fff;
   }
+
+  @media (max-width:1024px){
+    *{
+      font-size:32px;
+    }
+  }

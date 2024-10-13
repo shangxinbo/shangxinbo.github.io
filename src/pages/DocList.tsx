@@ -42,21 +42,21 @@ const DocList: React.FC = () => {
 
   if (!loadStatus) {
     return (
-      <div className="w-[1200px] flex flex-col m-3 h-96">
+      <div className="w-full lg:w-[1200px] flex flex-col m-3 h-96">
         <Loading />
       </div>
     )
   }
   if (classes.length <= 0) {
     return (
-      <div className="w-[1200px] flex flex-col m-3 h-96">
+      <div className="w-full lg:w-[1200px] flex flex-col m-3 h-96">
         <Blank />
       </div>
     )
   }
 
   return (
-    <div className="w-[1200px] flex flex-col m-3">
+    <div className="w-full lg:w-[1200px] flex flex-col m-3">
       <ul className="flex flex-row border-b-2">
         {classes.map((item, index) => (
           <li
