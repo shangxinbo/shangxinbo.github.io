@@ -100,6 +100,12 @@ git rebase -i <commit>
 
 交互式变基允许你在变基过程中编辑、删除或合并提交。常用选项包括：
 
+删除指定文件的版本跟踪
+```
+git rm --cached a.txt // 删除a.txt文件的跟踪并保留本地文件
+git rm --f a.txt //删除a.txt 文件的跟踪并删除本地文件
+```
+
 pick：保留提交
 reword：修改提交信息
 edit：编辑提交
