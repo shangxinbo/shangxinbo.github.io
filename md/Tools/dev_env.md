@@ -24,6 +24,8 @@ ReviOS
 
 所以当前最有的操作系统就是windows10 ltsc 2021
 
+系统分区意义不大，但是可能考虑有双系统的情况，目前就是一个c盘60~70G, D盘剩余的
+
 
 ## 系统级的管理工具
 
@@ -94,6 +96,7 @@ TODO 这里要加深一点技能
 
 ### database 
 目前除了mysql没有别的选择
+mysql性能优化
 
 ### SSH client
 Tabby

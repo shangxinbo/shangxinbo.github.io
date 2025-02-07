@@ -4,8 +4,6 @@
 
 河北农业大学 本科 计算机科学与技术专业 2012年毕业
 
-户籍：河北廊坊霸州
-
 常用邮箱：[314911714@qq.com](mailto:314911714@qq.com)
 
 常用电话：1861211498
@@ -15,34 +13,25 @@
 我的主页 [https://shangxinbo.github.io](https://shangxinbo.github.io)  
 GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo) 
 
-## 嫌太长这里有个简略版
-- 2012年毕业起从事前端工作，经历过 jQuery、Backbone.js、Angular 时代，现 Vue 生态用过 7 年，React 生态用过 3 年，可借助 Node.js 或 PHP 做全栈开发，熟悉 Koa、Express 和 Laravel，熟悉 MySQL，小项目运用过 MongoDB，在大流量场景中运用过 Redis 和 Memcached。
-- 大前端概念里基本都有涉略，CSR/SSR，Webapp/NativeApp/HybridApp，早年有用过 Cordova、AppCan 等 hybrid 方案，现如今有过 React Native 开发经验，有过 Uniapp 开发小程序经验。
-- 前端独立工程化有丰富的经验，熟悉 Nginx 以及 Node.js 的部署，使用过包括 Jenkins 在内的多种 CI/CD 持续集成化方案，对于 K8s、Kafka、Kibana 等工具有过使用经验。
-- 常见的前端解决方案，比如响应式、多媒体、动画以及 Canvas、WebSocket 等有着丰富的经验。
-- 熟悉软件开发模式，尤其敏捷式开发，熟悉包括 Jira 在内的项目管理工具。
-- 计算机专业，数据结构、算法和网络协议这些都没有问题，熟悉浏览器 HTTP 层的实现，熟悉以 Chrome 为准的浏览器渲染引擎的工作原理。
-- 喜欢安静的 coding。
+## 主要技能
+ - 前端主要生态框架Vue/React，CSR:SPA，SSR：Nuxt.js/Next.js都有完成过成熟的项目，Vue2从17年开始在生产环境使用，vue3和React在21年生产环境使用
+ - HTTP通信协议，状态码，缓存机制，跨域解决方案
+ - Node.js服务端开发，Express/Koa/Fastify框架都有生产环境成熟使用经验，Memcached和Redis,mysql/mongodb
+ - 独立部署能力，熟悉nginx，node环境，SPA，php环境独立部署
+ - 大前端 WebApp/Hybridapp有过开发经验，熟练使用uniapp/Taro开发小程序，早年有Cordova和ReactNative开发经验，桌面端有用electron做过一个开源项目
 
 ## 工作经历与技能成长
-### 2023.01.01 ~ 至今 自由职业
-
-期间持续从事技术类项目，列举 3 个说明，除以下项目还接手过微信小程序和 Electron 做的一些私人工具类项目，可以参见 GitHub 主页。
-
-1. 个人独立完成简要眼镜店管理
-   
-    线上地址 [https://tuzki.cc/](https://tuzki.cc/) 
-    
-    GitHub 项目：[https://github.com/shangxinbo/glass](https://github.com/shangxinbo/glass)
-
-    技术栈：Nuxt.js + Vant UI，服务端通过 serverMiddleware + MySQL（先 MongoDB 后为 MySQL）
-   - 全栈式开发，包括数据库设计、前后端交互数据接口、MySQL 调用。
-   - 独立部署使用 [https://buddy.works/](https://buddy.works/) 持续集成化部署项目，Nginx + PM2 配置。
-   - 日常维护工作，数据库自动备份脚本、日志分割保存、自动化定期发送数据汇总邮件脚本。
-   - 系统内存优化等运维工作。
+### 2024.06 ~ 至今
+1. 寻找宠物 https://pawpawfinder.com/ 
+    - 技术栈：Nuxt.js + MySQL
+    - 相关技术点：
+        - PM2,加pm2-logrotate
+        - vuetify.js UI + @iconify-json/mdi
+        - unocss + unocss/nuxt
+        - typescript
+        - Nuxt 缓存defineCachedEventHandler
 
 2. 基于 Cockpit 二次开发运维管理平台
-   
     线上测试地址：[https://116.204.86.81:9854/](https://116.204.86.81:9854/)
 
     技术栈：Esbuild + React + PatternFly + Warewulf Shell 
@@ -50,15 +39,25 @@ GitHub [https://github.com/shangxinbo](https://github.com/shangxinbo)
    - 包括节点管理、文件目录的拖拽复制、集群管理等模块。
    - ESLint 9 的配置，Esbuild 的打包配置。
 
-3. AI 写作的平台 Dream Ink Flora
-   
+3. 律师站 https://uslegalroster.com/
+    牙医站 https://usdentaltalk.com/
+   - tailwindcss + element plus + icons @heroicons/vue
     技术栈：Vue3 Composition API + TypeScript + Element Plus + vue-router + Pinia，包括 SCSS 等。
    - 前端独立工程化，Vite 本地开发服务器，生产 Nginx 代理解决跨域。
-   - 移动端和 PC 端两套视图调用核心公共化模块，响应式，移动端处理。
-   - WebSocket 对接 AI 模型输出，API 调用使用 Fetch。
 
+4. http://tuzki.cc:86/ 测试阶段，AI 大语言模型对接
+![Moss](../../assets/imgs/moss.png)
+    - React + jotai 
+    - MUI + unocss 
+    - Vite
+    可对接多个大预言模型开放API,目前已测试接入的平台
+        - openrouter.ai
+        - openai
+        - 通义千问
+        - gemini
+        - deepseek 
 
-### 2020.5 ~ 2022.12.31 快手 用户增长部
+### 2020.5 ~ 2024.6 快手 用户增长部
 
 1. 快手极速版赚钱页 主 Owner 项目
   
